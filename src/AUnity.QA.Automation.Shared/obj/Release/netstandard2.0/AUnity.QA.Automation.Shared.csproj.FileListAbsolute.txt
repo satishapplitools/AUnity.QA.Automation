@@ -1,0 +1,9 @@
+D:\QA.Automation-develop\src\AUnity.QA.Automation.Shared\bin\Release\netstandard2.0\AUnity.QA.Automation.Shared.deps.json
+D:\QA.Automation-develop\src\AUnity.QA.Automation.Shared\bin\Release\netstandard2.0\AUnity.QA.Automation.Shared.dll
+D:\QA.Automation-develop\src\AUnity.QA.Automation.Shared\bin\Release\netstandard2.0\AUnity.QA.Automation.Shared.pdb
+D:\QA.Automation-develop\src\AUnity.QA.Automation.Shared\obj\Release\netstandard2.0\AUnity.QA.Automation.Shared.csproj.AssemblyReference.cache
+D:\QA.Automation-develop\src\AUnity.QA.Automation.Shared\obj\Release\netstandard2.0\AUnity.QA.Automation.Shared.AssemblyInfoInputs.cache
+D:\QA.Automation-develop\src\AUnity.QA.Automation.Shared\obj\Release\netstandard2.0\AUnity.QA.Automation.Shared.AssemblyInfo.cs
+D:\QA.Automation-develop\src\AUnity.QA.Automation.Shared\obj\Release\netstandard2.0\AUnity.QA.Automation.Shared.csproj.CoreCompileInputs.cache
+D:\QA.Automation-develop\src\AUnity.QA.Automation.Shared\obj\Release\netstandard2.0\AUnity.QA.Automation.Shared.dll
+D:\QA.Automation-develop\src\AUnity.QA.Automation.Shared\obj\Release\netstandard2.0\AUnity.QA.Automation.Shared.pdb

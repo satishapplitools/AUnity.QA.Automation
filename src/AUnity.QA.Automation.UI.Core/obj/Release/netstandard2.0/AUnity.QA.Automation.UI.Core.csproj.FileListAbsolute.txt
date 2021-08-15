@@ -1,0 +1,17 @@
+D:\QA.Automation-develop\src\AUnity.QA.Automation.UI.Core\bin\Release\netstandard2.0\PowershellScripts\SpecFlowReportLauncher.ps1
+D:\QA.Automation-develop\src\AUnity.QA.Automation.UI.Core\bin\Release\netstandard2.0\Templates\Reports\ReportTemplate.cshtml
+D:\QA.Automation-develop\src\AUnity.QA.Automation.UI.Core\bin\Release\netstandard2.0\Templates\Reports\ReportTemplate_Json.cshtml
+D:\QA.Automation-develop\src\AUnity.QA.Automation.UI.Core\bin\Release\netstandard2.0\AUnity.QA.Automation.UI.Core.deps.json
+D:\QA.Automation-develop\src\AUnity.QA.Automation.UI.Core\bin\Release\netstandard2.0\AUnity.QA.Automation.UI.Core.dll
+D:\QA.Automation-develop\src\AUnity.QA.Automation.UI.Core\bin\Release\netstandard2.0\AUnity.QA.Automation.UI.Core.pdb
+D:\QA.Automation-develop\src\AUnity.QA.Automation.UI.Core\bin\Release\netstandard2.0\AUnity.QA.Automation.Shared.dll
+D:\QA.Automation-develop\src\AUnity.QA.Automation.UI.Core\bin\Release\netstandard2.0\AUnity.QA.Automation.UI.BrowserDrivers.Chrome.dll
+D:\QA.Automation-develop\src\AUnity.QA.Automation.UI.Core\bin\Release\netstandard2.0\AUnity.QA.Automation.Shared.pdb
+D:\QA.Automation-develop\src\AUnity.QA.Automation.UI.Core\bin\Release\netstandard2.0\AUnity.QA.Automation.UI.BrowserDrivers.Chrome.pdb
+D:\QA.Automation-develop\src\AUnity.QA.Automation.UI.Core\obj\Release\netstandard2.0\AUnity.QA.Automation.UI.Core.csproj.AssemblyReference.cache
+D:\QA.Automation-develop\src\AUnity.QA.Automation.UI.Core\obj\Release\netstandard2.0\AUnity.QA.Automation.UI.Core.AssemblyInfoInputs.cache
+D:\QA.Automation-develop\src\AUnity.QA.Automation.UI.Core\obj\Release\netstandard2.0\AUnity.QA.Automation.UI.Core.AssemblyInfo.cs
+D:\QA.Automation-develop\src\AUnity.QA.Automation.UI.Core\obj\Release\netstandard2.0\AUnity.QA.Automation.UI.Core.csproj.CoreCompileInputs.cache
+D:\QA.Automation-develop\src\AUnity.QA.Automation.UI.Core\obj\Release\netstandard2.0\AUnity.QA.Automation.UI.Core.csproj.CopyComplete
+D:\QA.Automation-develop\src\AUnity.QA.Automation.UI.Core\obj\Release\netstandard2.0\AUnity.QA.Automation.UI.Core.dll
+D:\QA.Automation-develop\src\AUnity.QA.Automation.UI.Core\obj\Release\netstandard2.0\AUnity.QA.Automation.UI.Core.pdb

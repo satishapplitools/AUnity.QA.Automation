@@ -1,0 +1,469 @@
+{
+  "Configuration": {
+    "TestProfileSettings": {
+      "Name": "TQP.QA.Automation.UI.Test",
+      "ProjectName": "TQP.QA.Automation.UI.Test",
+      "LicenseKey": null,
+      "ProjectIdGuid": "00000000-0000-0000-0000-000000000000",
+      "ProjectId": "00000000-0000-0000-0000-000000000000",
+      "BaseFolder": "D:\\QA.Automation-develop\\src\\TQP.QA.Automation.UI.Test\\bin\\Debug\\net5.0",
+      "OutputFolderSetting": "Results",
+      "ReportTemplate": null,
+      "OriginalBaseFolder": "D:\\QA.Automation-develop\\src\\TQP.QA.Automation.UI.Test\\bin\\Debug\\net5.0",
+      "OutputFolder": "D:\\QA.Automation-develop\\src\\TQP.QA.Automation.UI.Test\\bin\\Debug\\net5.0\\Results"
+    },
+    "ServerSettings": {
+      "PublishResults": false,
+      "ServerUrl": null
+    },
+    "ExecutionSettings": {
+      "StopAfterFailures": 1,
+      "TestSchedulingMode": 0,
+      "TestThreadCount": 1,
+      "RetryMode": 1,
+      "RetryCount": 2,
+      "ApartmentState": 2,
+      "IsDryRun": false
+    },
+    "ReportSettings": {
+      "CopyAlsoToBaseFolder": false,
+      "DisableGeneration": false,
+      "Templates": [
+        {
+          "InputName": "Templates\\Reports\\ReportTemplate.cshtml",
+          "OutputName": "Report_{now:yyyy-MM-ddTHHmmss}.html",
+          "ExistingFileHandlingStrategy": 1,
+          "OutputCulture": null
+        },
+        {
+          "InputName": "Templates\\Reports\\ReportTemplate_Json.cshtml",
+          "OutputName": "Report_{now:yyyy-MM-ddTHHmmss}.json",
+          "ExistingFileHandlingStrategy": 1,
+          "OutputCulture": null
+        }
+      ]
+    },
+    "TestEnvironmentSettings": {
+      "FrameworkVersion": 0,
+      "Platform": 0,
+      "ApartmentState": 2,
+      "TestThreadIsolation": 0
+    },
+    "VsTestSettings": {
+      "TestRetryResults": 0,
+      "PassRateRelative": null,
+      "PassRateAbsolute": null
+    },
+    "Host": {
+      "Url": null
+    },
+    "TestAssemblyPaths": [
+      "TQP.QA.Automation.UI.Test.dll"
+    ],
+    "Targets": [
+      {
+        "Name": "Default",
+        "TestEnvironmentSettings": {
+          "FrameworkVersion": 0,
+          "Platform": 0,
+          "ApartmentState": 2,
+          "TestThreadIsolation": 0
+        },
+        "DeploymentTransformationSteps": null,
+        "FilterConfiguration": {
+          "FilterExpression": null,
+          "Filter": null
+        }
+      }
+    ],
+    "FilterConfiguration": {
+      "FilterExpression": null,
+      "Filter": {
+        "$filterItemType": "MultipleOrFilter"
+      }
+    },
+    "DeploymentTransformation": {
+      "Steps": {
+        "Steps": [
+          {
+            "$deploymentTransformationStepConfigurationType": "EnvironmentVariableStepConfiguration",
+            "Variable": "AWS_PROFILE",
+            "Value": "ticklestaging"
+          }
+        ]
+      },
+      "GlobalSteps": {
+        "Steps": null
+      }
+    },
+    "TestThreads": [],
+    "ResolvedTestThreads": [
+      {
+        "ThreadId": 0,
+        "TestAffinity": {
+          "FilterExpression": null,
+          "Filter": null
+        },
+        "Host": null,
+        "ExecutionModelSettings": {
+          "Default": {
+            "Model": 2,
+            "ClrVersion": 10,
+            "Platform": 2,
+            "ApartmentState": 1,
+            "ExecutorUniqueId": "a5b63497-df50-4493-a346-f5ac84d8d8b8",
+            "Host": {
+              "Url": null
+            },
+            "IsInProcModel": false
+          }
+        }
+      }
+    ]
+  },
+  "TestSuite": {
+    "$testNodeType": "TestSuite",
+    "SubNodes": [
+      {
+        "$testNodeType": "TestCollection",
+        "SubNodes": [
+          {
+            "$testNodeType": "TestAssemblyCollection",
+            "AssemblyInitializeExecutors": [
+              {
+                "$executorType": "StaticOrInstanceMethodExecutor",
+                "Method": {
+                  "Type": {
+                    "Assembly": {
+                      "Location": "D:\\QA.Automation-develop\\src\\TQP.QA.Automation.UI.Test\\bin\\Debug\\net5.0\\TQP.QA.Automation.UI.Test.dll",
+                      "FullName": "TQP.QA.Automation.UI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+                    },
+                    "FullName": "TQP_QA_Automation_UI_Test_SpecFlowPlusRunnerAssemblyHooks",
+                    "Name": "TQP_QA_Automation_UI_Test_SpecFlowPlusRunnerAssemblyHooks"
+                  },
+                  "Name": "AssemblyInitialize",
+                  "Signature": []
+                },
+                "Arguments": null
+              }
+            ],
+            "AssemblyCleanupExecutors": [],
+            "AssemblyReference": {
+              "Location": "D:\\QA.Automation-develop\\src\\TQP.QA.Automation.UI.Test\\bin\\Debug\\net5.0\\TQP.QA.Automation.UI.Test.dll",
+              "FullName": "TQP.QA.Automation.UI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+            },
+            "SubNodes": [
+              {
+                "$testNodeType": "TestCollection",
+                "SubNodes": [
+                  {
+                    "$testNodeType": "TestItem",
+                    "TestAssembly": {
+                      "Location": "D:\\QA.Automation-develop\\src\\TQP.QA.Automation.UI.Test\\bin\\Debug\\net5.0\\TQP.QA.Automation.UI.Test.dll",
+                      "FullName": "TQP.QA.Automation.UI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+                    },
+                    "Executor": {
+                      "$executorType": "InstanceMethodExecutor",
+                      "Method": {
+                        "Type": {
+                          "Assembly": {
+                            "Location": "D:\\QA.Automation-develop\\src\\TQP.QA.Automation.UI.Test\\bin\\Debug\\net5.0\\TQP.QA.Automation.UI.Test.dll",
+                            "FullName": "TQP.QA.Automation.UI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+                          },
+                          "FullName": "TQP.QA.Automation.UI.Test.Features.AustralianUnityFeature",
+                          "Name": "AustralianUnityFeature"
+                        },
+                        "Name": "NavigateAndValidateUI_Variant0",
+                        "Signature": []
+                      },
+                      "Arguments": null
+                    },
+                    "IsIgnored": false,
+                    "IgnoreReason": null,
+                    "Id": 4,
+                    "Type": 5,
+                    "Title": "Navigate and Validate UI, Variant 0",
+                    "Description": null,
+                    "Initializer": null,
+                    "Cleanup": {
+                      "$executorType": "InstanceMethodExecutor",
+                      "Method": {
+                        "Type": {
+                          "Assembly": {
+                            "Location": "D:\\QA.Automation-develop\\src\\TQP.QA.Automation.UI.Test\\bin\\Debug\\net5.0\\TQP.QA.Automation.UI.Test.dll",
+                            "FullName": "TQP.QA.Automation.UI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+                          },
+                          "FullName": "TQP.QA.Automation.UI.Test.Features.AustralianUnityFeature",
+                          "Name": "AustralianUnityFeature"
+                        },
+                        "Name": "TestTearDown",
+                        "Signature": []
+                      },
+                      "Arguments": null
+                    },
+                    "ExecutionCulture": null,
+                    "Tags": [],
+                    "Source": {
+                      "SourceFile": "Features\\NavigateTo.feature",
+                      "SourceLine": 11
+                    },
+                    "TestTarget": "Default",
+                    "IsDefaultTestTarget": true
+                  },
+                  {
+                    "$testNodeType": "TestItem",
+                    "TestAssembly": {
+                      "Location": "D:\\QA.Automation-develop\\src\\TQP.QA.Automation.UI.Test\\bin\\Debug\\net5.0\\TQP.QA.Automation.UI.Test.dll",
+                      "FullName": "TQP.QA.Automation.UI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+                    },
+                    "Executor": {
+                      "$executorType": "InstanceMethodExecutor",
+                      "Method": {
+                        "Type": {
+                          "Assembly": {
+                            "Location": "D:\\QA.Automation-develop\\src\\TQP.QA.Automation.UI.Test\\bin\\Debug\\net5.0\\TQP.QA.Automation.UI.Test.dll",
+                            "FullName": "TQP.QA.Automation.UI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+                          },
+                          "FullName": "TQP.QA.Automation.UI.Test.Features.AustralianUnityFeature",
+                          "Name": "AustralianUnityFeature"
+                        },
+                        "Name": "NavigateAndValidateUI_Variant1",
+                        "Signature": []
+                      },
+                      "Arguments": null
+                    },
+                    "IsIgnored": false,
+                    "IgnoreReason": null,
+                    "Id": 5,
+                    "Type": 5,
+                    "Title": "Navigate and Validate UI, Variant 1",
+                    "Description": null,
+                    "Initializer": null,
+                    "Cleanup": {
+                      "$executorType": "InstanceMethodExecutor",
+                      "Method": {
+                        "Type": {
+                          "Assembly": {
+                            "Location": "D:\\QA.Automation-develop\\src\\TQP.QA.Automation.UI.Test\\bin\\Debug\\net5.0\\TQP.QA.Automation.UI.Test.dll",
+                            "FullName": "TQP.QA.Automation.UI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+                          },
+                          "FullName": "TQP.QA.Automation.UI.Test.Features.AustralianUnityFeature",
+                          "Name": "AustralianUnityFeature"
+                        },
+                        "Name": "TestTearDown",
+                        "Signature": []
+                      },
+                      "Arguments": null
+                    },
+                    "ExecutionCulture": null,
+                    "Tags": [],
+                    "Source": {
+                      "SourceFile": "Features\\NavigateTo.feature",
+                      "SourceLine": 11
+                    },
+                    "TestTarget": "Default",
+                    "IsDefaultTestTarget": true
+                  }
+                ],
+                "IsIgnored": false,
+                "IsEmpty": false,
+                "IgnoreReason": null,
+                "Id": 3,
+                "Type": 4,
+                "Title": "Australian Unity",
+                "Description": "    Navigating and validating UI",
+                "Initializer": {
+                  "$executorType": "ChainedTaskExecutor",
+                  "InnerExecutors": [
+                    {
+                      "TestType": {
+                        "Assembly": {
+                          "Location": "D:\\QA.Automation-develop\\src\\TQP.QA.Automation.UI.Test\\bin\\Debug\\net5.0\\TQP.QA.Automation.UI.Test.dll",
+                          "FullName": "TQP.QA.Automation.UI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+                        },
+                        "FullName": "TQP.QA.Automation.UI.Test.Features.AustralianUnityFeature",
+                        "Name": "AustralianUnityFeature"
+                      },
+                      "$executorType": "TestInstanceInitializer"
+                    },
+                    {
+                      "Method": {
+                        "Type": {
+                          "Assembly": {
+                            "Location": "D:\\QA.Automation-develop\\src\\TQP.QA.Automation.UI.Test\\bin\\Debug\\net5.0\\TQP.QA.Automation.UI.Test.dll",
+                            "FullName": "TQP.QA.Automation.UI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+                          },
+                          "FullName": "TQP.QA.Automation.UI.Test.Features.AustralianUnityFeature",
+                          "Name": "AustralianUnityFeature"
+                        },
+                        "Name": "FeatureSetup",
+                        "Signature": []
+                      },
+                      "Arguments": null,
+                      "$executorType": "InstanceMethodExecutor"
+                    }
+                  ]
+                },
+                "Cleanup": {
+                  "$executorType": "InstanceMethodExecutor",
+                  "Method": {
+                    "Type": {
+                      "Assembly": {
+                        "Location": "D:\\QA.Automation-develop\\src\\TQP.QA.Automation.UI.Test\\bin\\Debug\\net5.0\\TQP.QA.Automation.UI.Test.dll",
+                        "FullName": "TQP.QA.Automation.UI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+                      },
+                      "FullName": "TQP.QA.Automation.UI.Test.Features.AustralianUnityFeature",
+                      "Name": "AustralianUnityFeature"
+                    },
+                    "Name": "FeatureTearDown",
+                    "Signature": []
+                  },
+                  "Arguments": null
+                },
+                "ExecutionCulture": null,
+                "Tags": [],
+                "Source": {
+                  "SourceFile": "Features\\NavigateTo.feature",
+                  "SourceLine": 0
+                },
+                "TestTarget": "Default",
+                "IsDefaultTestTarget": true
+              }
+            ],
+            "IsIgnored": false,
+            "IsEmpty": false,
+            "IgnoreReason": null,
+            "Id": 2,
+            "Type": 3,
+            "Title": "TQP.QA.Automation.UI.Test",
+            "Description": null,
+            "Initializer": null,
+            "Cleanup": null,
+            "ExecutionCulture": null,
+            "Tags": [],
+            "Source": null,
+            "TestTarget": "Default",
+            "IsDefaultTestTarget": true
+          }
+        ],
+        "IsIgnored": false,
+        "IsEmpty": false,
+        "IgnoreReason": null,
+        "Id": 1,
+        "Type": 2,
+        "Title": "Default",
+        "Description": null,
+        "Initializer": null,
+        "Cleanup": null,
+        "ExecutionCulture": null,
+        "Tags": [],
+        "Source": null,
+        "TestTarget": "Default",
+        "IsDefaultTestTarget": true
+      }
+    ],
+    "IsIgnored": false,
+    "IsEmpty": false,
+    "IgnoreReason": null,
+    "Id": 0,
+    "Type": 1,
+    "Title": "TQP.QA.Automation.UI.Test/TQP.QA.Automation.UI.Test",
+    "Description": null,
+    "Initializer": null,
+    "Cleanup": null,
+    "ExecutionCulture": null,
+    "Tags": [],
+    "Source": null,
+    "TestTarget": "Default",
+    "IsDefaultTestTarget": true
+  },
+  "Summary": {
+    "ResultCounts": {
+      "Unknown": 0,
+      "Succeeded": 0,
+      "Ignored": 0,
+      "Pending": 0,
+      "NothingToRun": 0,
+      "Skipped": 1,
+      "Inconclusive": 0,
+      "CleanupFailed": 0,
+      "RandomlyFailed": 0,
+      "Failed": 1,
+      "InitializationFailed": 0,
+      "FrameworkError": 0,
+      "ConfigurationError": 0,
+      "InvalidLicense": 0
+    },
+    "TestExecutionResultCounts": {
+      "Unknown": 0,
+      "Succeeded": 0,
+      "Ignored": 0,
+      "Pending": 0,
+      "NothingToRun": 0,
+      "Skipped": 1,
+      "Inconclusive": 0,
+      "CleanupFailed": 0,
+      "RandomlyFailed": 0,
+      "Failed": 1,
+      "InitializationFailed": 0,
+      "FrameworkError": 0,
+      "ConfigurationError": 0,
+      "InvalidLicense": 0
+    },
+    "Total": 2,
+    "TotalExecutions": 2,
+    "Succeeded": 0,
+    "Ignored": 0,
+    "Pending": 0,
+    "NothingToRun": 0,
+    "Skipped": 1,
+    "Inconclusive": 0,
+    "CleanupFailed": 0,
+    "Failed": 1,
+    "RandomlyFailed": 0,
+    "InitializationFailed": 0,
+    "FrameworkError": 0,
+    "TotalSucceeded": 0,
+    "TotalIgnored": 0,
+    "TotalPending": 0,
+    "TotalWarning": 1,
+    "TotalFailure": 1,
+    "TotalSucceededScenarios": 0,
+    "TotalPendingScenarios": 0,
+    "TotalWarningScenarios": 1,
+    "TotalFailureScenarios": 1,
+    "TotalIgnoredScenarios": 0,
+    "TotalSkippedScenarios": 1,
+    "FrameworkErrorException": null,
+    "ConcludedResult": 540,
+    "ConcludedResultGroup": 500,
+    "TotalMessage": "2",
+    "ConcludedResultMessage": "1 failed"
+  },
+  "ExecutionTime": {
+    "StartTime": "2021-08-02T22:30:22.1711643+10:00",
+    "EndTime": "2021-08-02T22:31:23.3527798+10:00"
+  },
+  "Tests": [],
+  "TestThreads": [
+    {
+      "ThreadId": 0,
+      "MachineName": "DESKTOP-VOTDP1M",
+      "ExecutionTime": {
+        "StartTime": "2021-08-02T22:30:22.28659+10:00",
+        "EndTime": "2021-08-02T22:31:23.345948+10:00"
+      },
+      "TestThreadError": null
+    }
+  ],
+  "EvaluationMode": false,
+  "BuildServerMode": false,
+  "Reports": [
+    {
+      "ReportPathAndFileName": "D:\\QA.Automation-develop\\src\\TQP.QA.Automation.UI.Test\\bin\\Debug\\net5.0\\Results\\Report_2021-08-02T223124.html"
+    }
+  ],
+  "CurrentReportPath": "D:\\QA.Automation-develop\\src\\TQP.QA.Automation.UI.Test\\bin\\Debug\\net5.0\\Results\\Report_2021-08-02T223124.json",
+  "ReportFileNameParameter": "TQP.QA.Automation.UI.Test_TQP.QA.Automation.UI.Test_2021-08-02T223021.html",
+  "CurrentCulture": null
+};

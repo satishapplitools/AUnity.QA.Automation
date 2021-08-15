@@ -1,0 +1,11 @@
+﻿2021-08-02T22:35:04.3329518+10:00;Thread#1;Info;Reading test run result from Json file "C:\Users\Satish\AppData\Local\Temp\8e634e31-8ead-474e-84ec-9ccb6a2c3352".
+2021-08-02T22:35:04.3469159+10:00;Thread#1;Info;Successfully read test run result from Json file "C:\Users\Satish\AppData\Local\Temp\8e634e31-8ead-474e-84ec-9ccb6a2c3352"
+2021-08-02T22:35:04.3469159+10:00;Thread#1;Info;Deserializing test run result
+2021-08-02T22:35:04.8864745+10:00;Thread#1;Info;Successfully deserialized test run result
+2021-08-02T22:35:04.8864745+10:00;Thread#1;Info;Loading test run result
+2021-08-02T22:35:04.9143967+10:00;Thread#1;Info;Successfully loaded test run result
+2021-08-02T22:35:04.9353705+10:00;Thread#1;Info;creating 2 report(s)
+2021-08-02T22:35:04.9353705+10:00;Thread#1;Info;generate Report using template D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\Templates\Reports\ReportTemplate.cshtml
+2021-08-02T22:35:05.9215158+10:00;Thread#1;Info;generate Report using template D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\Templates\Reports\ReportTemplate_Json.cshtml
+2021-08-02T22:35:06.2393567+10:00;Thread#1;Info;Finished generating reports.
+========== End of log file ==========

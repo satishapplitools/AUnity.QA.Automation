@@ -1,0 +1,11 @@
+﻿2021-08-02T23:10:45.8808938+10:00;Thread#1;Info;Reading test run result from Json file "C:\Users\Satish\AppData\Local\Temp\63c8d91d-c877-4f3c-ae70-d53a7fb6a131".
+2021-08-02T23:10:45.8948561+10:00;Thread#1;Info;Successfully read test run result from Json file "C:\Users\Satish\AppData\Local\Temp\63c8d91d-c877-4f3c-ae70-d53a7fb6a131"
+2021-08-02T23:10:45.8948561+10:00;Thread#1;Info;Deserializing test run result
+2021-08-02T23:10:46.4643371+10:00;Thread#1;Info;Successfully deserialized test run result
+2021-08-02T23:10:46.4643371+10:00;Thread#1;Info;Loading test run result
+2021-08-02T23:10:46.4872748+10:00;Thread#1;Info;Successfully loaded test run result
+2021-08-02T23:10:46.5082193+10:00;Thread#1;Info;creating 2 report(s)
+2021-08-02T23:10:46.5082193+10:00;Thread#1;Info;generate Report using template D:\QA.Automation-develop\src\AUnity.QA.Automation.UI.Test\bin\Debug\net5.0\Templates\Reports\ReportTemplate.cshtml
+2021-08-02T23:10:47.4575105+10:00;Thread#1;Info;generate Report using template D:\QA.Automation-develop\src\AUnity.QA.Automation.UI.Test\bin\Debug\net5.0\Templates\Reports\ReportTemplate_Json.cshtml
+2021-08-02T23:10:47.7626700+10:00;Thread#1;Info;Finished generating reports.
+========== End of log file ==========

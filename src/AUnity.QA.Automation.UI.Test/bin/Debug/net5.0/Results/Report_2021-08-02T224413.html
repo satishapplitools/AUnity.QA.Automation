@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<title>TQP.QA.Automation.UI.Test Test Execution Report</title>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+        <script type="text/javascript">
+            /**
+            * jQuery.fn.sortElements
+            * --------------
+            * #author James Padolsey (http://james.padolsey.com)
+            * #version 0.11
+            * #updated 18-MAR-2010
+            * #url https://raw.github.com/jamespadolsey/jQuery-Plugins/master/sortElements/jquery.sortElements.js
+            * --------------
+            * #param Function comparator:
+            *   Exactly the same behaviour as [1,2,3].sort(comparator)
+            *
+            * #param Function getSortable
+            *   A function that should return the element that is
+            *   to be sorted. The comparator will run on the
+            *   current collection, but you may want the actual
+            *   resulting sort to occur on a parent or another
+            *   associated element.
+            *
+            *   E.g. $('td').sortElements(comparator, function(){
+            *      return this.parentNode;
+            *   })
+            *
+            *   The <td>'s parent (<tr>) will be sorted instead
+            *   of the <td> itself.
+            */
+            jQuery.fn.sortElements = (function () {
+
+                var sort = [].sort;
+
+                return function (comparator, getSortable) {
+
+                    getSortable = getSortable || function () { return this; };
+
+                    var placements = this.map(function () {
+
+                        var sortElement = getSortable.call(this),
+                parentNode = sortElement.parentNode,
+
+                        // Since the element itself will change position, we have
+                        // to have some way of storing it's original position in
+                        // the DOM. The easiest way is to have a 'flag' node:
+                nextSibling = parentNode.insertBefore(
+                    document.createTextNode(''),
+                    sortElement.nextSibling
+                );
+
+                        return function () {
+
+                            if (parentNode === this) {
+                                throw new Error(
+                        "You can't sort elements if any one is a descendant of another."
+                    );
+                            }
+
+                            // Insert before flag:
+                            parentNode.insertBefore(this, nextSibling);
+                            // Remove flag:
+                            parentNode.removeChild(nextSibling);
+
+                        };
+
+                    });
+
+                    return sort.call(this, comparator).each(function (i) {
+                        placements[i].call(getSortable.call(this));
+                    });
+
+                };
+
+            })();
+        </script>
+        <script type="text/javascript">
+            jQuery.fn.setBarSizes = (function () {
+                return function (metricName, maxBarSize, min) {
+                    var max = Math.max.apply(Math, $.makeArray($(this).map(function () { return Number($(this).attr('data-sr-' + metricName)); })));
+                    var scale = 1.0;
+                    while (max > 0.0 && max <= 10.0) {
+                        scale = scale * 10.0;
+                        max = max * 10.0;
+                    }
+                    max = (Math.ceil(max / 2) * 2) / scale;
+
+                    this.each(function () {
+                        var barAnchor = $(this).find('a');
+                        var actual = $(this).attr('data-sr-' + metricName);
+                        var newHeight = Math.max(Math.round(maxBarSize * (actual - min) / (max - min)), 2);
+                        barAnchor.css({ height: newHeight });
+                    });
+
+                    var unit = "";
+                    if (metricName.substr(metricName.length - 4, 4) === "time")
+                        unit = "s";
+
+                    $('#testview .scale-min-label').each(function () {
+                        $(this).text(min.toString() + unit);
+                    });
+                    $('#testview .scale-max-label').each(function () {
+                        $(this).text(max.toString() + unit);
+                    });
+                    var mid = max / 2;
+                    $('#testview .scale-mid-label').each(function () {
+                        $(this).text(mid.toString() + unit);
+                    });
+                };
+            })();
+
+            function getComparer(metricName, isDesc) {
+                return function (a, b) {
+                    var aNumber = Number($(a).attr('data-sr-' + metricName));
+                    var bNumber = Number($(b).attr('data-sr-' + metricName));
+                    var result = aNumber > bNumber ? 1 : (aNumber < bNumber ? -1 : 0);
+                    if (isDesc)
+                        result = -1 * result;
+
+                    if (result == 0 && metricName != "order")
+                        result = getComparer("order", false)(a, b);
+
+                    return result;
+                };
+            }
+
+            var currentSort = "";
+            function doSort(allowToggleDesc) {
+                var newSort = $("input[name='barSortOrder']:checked").val();
+                if (allowToggleDesc && currentSort == newSort) {
+                    $('#barSortDesc').click();
+                    doSort(false);
+                    return;
+                }
+                currentSort = newSort;
+                $('#testview td.testview-item').sortElements(getComparer(newSort, $('#barSortDesc').is(':checked')));
+            }
+
+
+            function doSetHeights(allowSort) {
+                var selectedMetric = $("input[name='barHeight']:checked").val();
+                $('#testview td.testview-item').setBarSizes(selectedMetric, 60, 0.0);
+
+                if (allowSort && currentSort != selectedMetric) {
+                    var $radios = $("input[name='barSortOrder']");
+                    $radios.filter('[value=' + selectedMetric + ']').attr('checked', true);
+                    $("#barSortDesc").attr("checked", [true]);
+                    doSort(false);
+                }
+            }
+
+            $(document).ready(function () {
+                $("input[name='barSortOrder']").click(function () { doSort(true); return true; });
+                $("input[name='barSortDesc']").change(function () { doSort(false); });
+                $("input[name='barHeight']").change(function () { doSetHeights(true); });
+
+                doSort(false);
+                doSetHeights(false);
+
+                $("div.scrollable").css({ 'overflow': 'auto' });
+            });
+        </script>
+
+        <style type="text/css">
+            body
+            {
+                color: #000000;
+                font-family: Arial,Liberation Sans,DejaVu Sans,sans-serif;
+                line-height: 130%;
+            }
+            h1 {
+                font-family: Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;
+                font-size: 170%;
+                font-weight: bold;
+            }
+            h2 {
+                font-family: Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;
+                font-size: 130%;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+            h3 {
+                font-family: Trebuchet MS,Liberation Sans,DejaVu Sans,sans-serif;
+                font-size: 120%;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+            a.bar
+            {
+                text-decoration: none;
+                display: block;
+                line-height: 1px;
+            }
+            .description
+            {
+                font-style: italic;
+            }
+            .log
+            {
+                width: 600px;
+                white-space: pre-wrap;
+                display: block;
+                margin: 0px;
+            }
+            .errorMessage
+            {
+                width: 600px;
+                color: Red;
+                font-weight: bold;
+            }
+            .stackTrace
+            {
+                width: 600px;
+                white-space: pre-wrap;
+                font-style: italic;
+                color: Red;
+                display: block;
+            }
+            table.testEvents
+            {
+                border: solid 1px #e8eef4;
+                border-collapse: collapse;
+            }
+            table.testEvents td
+            {
+                vertical-align: top;
+                padding: 5px;
+                border: solid 1px #e8eef4;
+            }
+            table.testEvents th
+            {
+                padding: 6px 5px;
+                text-align: left;
+                background-color: #e8eef4;
+                border: solid 1px #e8eef4;
+            }
+            .comment
+            {
+                font-style: italic;
+                font-size: smaller;
+            }
+            .startupBar
+            {
+                background-color: #EEEEEE;
+                cursor: default;
+            }
+
+            .colorSucceeded
+            {
+                background-color: #90ED7B;
+            }
+            .colorIgnored
+            {
+                background-color: #FFFF85;
+            }
+            .colorPending
+            {
+                background-color: #D47BED;
+            }
+            .colorNothingToRun
+            {
+                background-color: #CCCCFF;
+            }
+            .colorSkipped
+            {
+                background-color: #CCCCFF;
+            }
+            .colorInconclusive
+            {
+                background-color: #7BEDED;
+            }
+            .colorCleanupFailed
+            {
+                background-color: #FFCCCC;
+            }
+            .colorRandomlyFailed
+            {
+                background-color: #EDB07B;
+            }
+            .colorFailed
+            {
+                background-color: #ED5F5F;
+            }
+            .colorInitializationFailed
+            {
+                background-color: #FF0000;
+            }
+            .colorFrameworkError
+            {
+                background-color: #FF0000;
+            }
+            ul.subNodeLinks
+            {
+                padding-left: 20px;
+                margin: 0px;
+            }
+            ul.subNodeLinks li
+            {
+                list-style: none;
+            }
+
+            /* views general */
+            div.scrollable
+            {
+                /*overflow: auto; - thsi has to be set from js, because of an IE9 bug */
+            }
+            div.viewbox
+            {
+                position: relative;
+                border: 3px solid #e8eef4;
+            }
+            div.viewbox table
+            {
+                border: 0px;
+            }
+
+            /* testview */
+            #testview
+            {
+                padding-top: 23px;
+            }
+
+            table.testview-items td
+            {
+                vertical-align: bottom;
+                padding: 0px 1px 0px 1px;
+            }
+            td.right-padding, td.left-padding
+            {
+                width: 25px;
+                min-width: 25px;
+            }
+            table.testview-items a.bar
+            {
+                width: 5px;
+            }
+            table.testview-items tr.testview-items-row
+            {
+                height: 60px;
+            }
+
+            /* scale */
+            table.vertical-scale
+            {
+                position: absolute;
+                top: 23px;
+                left: 0px;
+                width: 100%;
+                z-index: -100;
+            }
+            table.vertical-scale td, tr.horizontal-scale td
+            {
+                font-size: 60%;
+                line-height: normal;
+            }
+            table.vertical-scale tr.scale-max, table.vertical-scale tr.scale-mid
+            {
+                height: 30px;
+            }
+            tr.horizontal-scale, table.vertical-scale tr.scale-min
+            {
+                height: 12px;
+            }
+
+            td.scale-max-label, td.scale-mid-label, td.scale-min-label
+            {
+                border-top: solid 1px #E6E6E6;
+                text-align: left;
+                vertical-align: top;
+            }
+            td.scale-10-label
+            {
+                border-left: solid 1px #E6E6E6;
+                text-align: left;
+                vertical-align: bottom;
+                padding-left: 1px;
+            }
+            tr.scale-mid td, tr.scale-min td, tr.scale-max td
+            {
+                border-top: solid 1px #E6E6E6;
+            }
+
+
+            /* bar-control */
+            #bar-control
+            {
+                font-size: 60%;
+                line-height: normal;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+            }
+            #bar-control label
+            {
+                font-weight: bold;
+                vertical-align: middle;
+            }
+            #bar-control .option
+            {
+                vertical-align: middle;
+                text-transform: lowercase;
+            }
+            #bar-control input[type="checkbox"]
+            {
+                padding: 0 2px 0 3px;
+            }
+            #bar-control input
+            {
+                vertical-align: top;
+                height: 12px;
+                margin: 0px;
+                padding: 0px;
+            }
+            #bar-control div
+            {
+                float: right;
+                margin: 3px 5px 3px 5px;
+            }
+
+            /* timeline view */
+            #timelineview
+            {
+                padding-top: 5px;
+            }
+            table.timelineview a
+            {
+                height: 20px;
+            }
+            table.timelineview td
+            {
+                vertical-align: bottom;
+                padding: 0px 1px 0px 0px;
+                border: 0px;
+            }
+            tr.thread-items-row
+            {
+                height: 25px;
+            }
+            tr.thread-items-row td
+            {
+                vertical-align: bottom;
+            }
+            td.thread-label
+            {
+                padding: 0px 6px 0px 6px;
+                text-align: right;
+                line-height: 18px;
+                vertical-align: bottom;
+            }
+            th.thread-label
+            {
+                padding: 3px 6px 0px 6px;
+                line-height: 18px;
+                text-align: left;
+                vertical-align: bottom;
+            }
+        </style>
+	</head>
+	<body>
+        <h1>TQP.QA.Automation.UI.Test Test Execution Report</h1>
+        
+    <h2>Operation Big Bird</h2>
+    <ul>
+        <li>Project: TQP.QA.Automation.UI.Test</li>
+        <li>Configuration: TQP.QA.Automation.UI.Test</li>
+        <li>Test Assemblies: TQP.QA.Automation.UI.Test.dll</li>
+        <li>Start Time: 2/08/2021 10:41:57 PM</li>
+        <li>Duration: 00:02:15.4777464</li>
+        <li>Test Threads: 1</li>
+    </ul>
+
+
+        <h2>Result: all tests passed</h2>
+        <table class="testEvents">
+            <tr>
+    <th colspan="2">Success rate</th>
+    <th>Tests</th>
+    <th>Succeeded</th>
+    <th>Failed</th>
+    <th>Pending</th>
+    <th>Ignored</th>
+    <th>Skipped</th>
+</tr>
+
+                <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded"
+           style="width: 199px;"
+           title="2 succeeded"
+           ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+
+        </table>
+
+        <h2>Test Timeline Summary</h2>
+
+        <div id="timelineview" class="viewbox">
+            <div class="scrollable">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th class="thread-label" colspan="2">thread</th>
+                    </tr>
+                        <tr class="thread-items-row">
+                            <td class="thread-label" title="Machine: DESKTOP-VOTDP1M">#0</td>
+                            <td colspan="1">
+                                <table class="timelineview" cellpadding="0" cellspacing="0">
+                                    <tr>
+
+                                        <td>
+    <a class="bar startupBar"
+       style="width: 3px;"
+         title="test thread startup"
+>&nbsp;</a>
+</td>
+
+<td>
+    <a class="bar colorSucceeded"
+       style="width: 4px;"
+         title="Navigate and Validate UI, Variant 0 (in Australian Unity)"
+         href="#t120632068.0"
+>&nbsp;</a>
+</td>
+<td>
+    <a class="bar colorSucceeded"
+       style="width: 4px;"
+         title="Navigate and Validate UI, Variant 1 (in Australian Unity)"
+         href="#t120632071.0"
+>&nbsp;</a>
+</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    <tr class="horizontal-scale">
+                        <td>&nbsp;</td>
+                        <td class="scale-10-label">0s</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        
+    <h2>Test Result View</h2>
+    <div id="testview" class="viewbox">
+        <div id="bar-control">
+            <div id="bar-control-sort">
+                <label>sort by:</label>
+                <span class="option"><input type="radio" name="barSortOrder" value="exectime" />Time</span>
+                <span class="option"><input type="radio" name="barSortOrder" value="acttime" />Act Time</span>
+                <span class="option"><input type="radio" name="barSortOrder" value="order" />Execution</span>
+                <span class="option"><input type="radio" name="barSortOrder" value="rescode" checked="checked" />Result</span>
+                <span class="option"><input type="checkbox" name="barSortDesc" id="barSortDesc" checked="checked" />desc</span>
+            </div>
+            <div id="bar-control-heights">
+                <label>heights:</label>
+                <span class="option"><input type="radio" checked="checked" name="barHeight" value="exectime" />Time</span>
+                <span class="option"><input type="radio" name="barHeight" value="acttime" />Act Time</span>
+            </div>
+        </div>
+        <table class="vertical-scale" cellpadding="0" cellspacing="0">
+            <tr class="scale-max">
+                <td class="left-padding scale-max-label">&nbsp;</td>
+                <td colspan="2">&nbsp;</td>
+                <td class="right-padding">&nbsp;</td>
+            </tr>
+            <tr class="scale-mid">
+                <td class="left-padding scale-mid-label">&nbsp;</td>
+                <td colspan="2">&nbsp;</td>
+                <td class="right-padding">&nbsp;</td>
+            </tr>
+            <tr class="scale-min">
+                <td class="left-padding scale-min-label">&nbsp;</td>
+                <td colspan="2">&nbsp;</td>
+                <td class="right-padding">&nbsp;</td>
+            </tr>
+        </table>
+        <div class="scrollable">
+            <table class="testview-items" cellpadding="0" cellspacing="0">
+                <tr class="testview-items-row">
+                    <td class="left-padding">&nbsp;</td>
+<td class="testview-item"
+    data-sr-exectime="84.9880322" data-sr-rescode="110" data-sr-order="0" data-sr-acttime="4.515">
+    <a class="bar colorSucceeded"
+       style="height: 60px;"
+       title="Navigate and Validate UI, Variant 0 (in Australian Unity)"
+       href="#t120632068.0">&nbsp;</a>
+</td>
+<td class="testview-item"
+    data-sr-exectime="48.5879839" data-sr-rescode="110" data-sr-order="1" data-sr-acttime="4.051">
+    <a class="bar colorSucceeded"
+       style="height: 34px;"
+       title="Navigate and Validate UI, Variant 1 (in Australian Unity)"
+       href="#t120632071.0">&nbsp;</a>
+</td>
+                    <td class="right-padding">&nbsp;</td>
+                </tr>
+                <tr class="horizontal-scale">
+                    <td class="left-padding">&nbsp;</td>
+                    <td colspan="10">&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+        
+    <h2>Feature Summary</h2>
+    <table class="testEvents">
+        <tr>
+<th>Feature</th>    <th colspan="2">Success rate</th>
+    <th>Tests</th>
+    <th>Succeeded</th>
+    <th>Failed</th>
+    <th>Pending</th>
+    <th>Ignored</th>
+    <th>Skipped</th>
+<th>Duration</th></tr>
+
+
+            <tr>
+                <td><a href="#f266988325">Australian Unity</a></td>
+                    <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded"
+           style="width: 199px;"
+           title="2 succeeded"
+           ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:02:13.5760161</td>
+
+            </tr>
+    </table>
+
+
+        <a name="error_summary" />
+        <h2>Error Summary</h2>
+        <table class="testEvents">
+            <tr>
+<th>Test</th>    <th colspan="2">Success rate</th>
+    <th>Tests</th>
+    <th>Succeeded</th>
+    <th>Failed</th>
+    <th>Pending</th>
+    <th>Ignored</th>
+    <th>Skipped</th>
+</tr>
+
+        </table>
+
+        <h2>Scenario Summary</h2>
+            <a name="f266988325" />
+            <h3>Feature: Australian Unity</h3>
+                <div class="description"><pre>    Navigating and validating UI</pre>
+                </div>
+            <table class="testEvents">
+                <tr>
+<th>Test</th>    <th colspan="2">Success rate</th>
+    <th>Tests</th>
+    <th>Succeeded</th>
+    <th>Failed</th>
+    <th>Pending</th>
+    <th>Ignored</th>
+    <th>Skipped</th>
+<th>Duration</th></tr>
+
+                    <tr>
+                        <td>
+                                    <a href="#t120632068.0">Scenario: Navigate and Validate UI, Variant 0</a>
+
+                        </td>
+
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded"
+           style="width: 199px;"
+           title="1 succeeded"
+           ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:01:24.9880322</td>
+
+
+                    </tr>
+                    <tr>
+                        <td>
+                                    <a href="#t120632071.0">Scenario: Navigate and Validate UI, Variant 1</a>
+
+                        </td>
+
+                            <td>
+            100%
+    </td>
+    <td>
+            <table class="timelineview" cellpadding="0" cellspacing="0">
+        <tr>
+    <td>
+        <a class="bar colorSucceeded"
+           style="width: 199px;"
+           title="1 succeeded"
+           ></a>
+    </td>
+        </tr>
+    </table>
+
+    </td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+        <td>00:00:48.5879839</td>
+
+
+                    </tr>
+            </table>
+
+        <h2>Execution Details</h2>
+            <a name="t120632068.0" />
+            <h3>Scenario: Navigate and Validate UI, Variant 0 (in TQP.QA.Automation.UI.Test, Australian Unity)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 2/08/2021 10:41:58 PM</li>
+                <li>Execution time (sec): 84.9880322</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given I am on the home page for production</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Navigate and Validate UI, Variant 0] -->
+                                <pre class="log">done: NavigateToSteps.GivenIAmOnTheHomePageFor(&quot;production&quot;) (8.4s)
+
+</pre>
+                                <br />
+                                <a href="./Screenshots\tmp4544.png" target="_blank"><img src="./Screenshots\tmp4544.png" width="150"></a>
+                        </td>
+                        <td>Succeeded in 9.702s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When I navigate to banking/bankaccounts</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Navigate and Validate UI, Variant 0] -->
+                                <pre class="log">URL here is banking/bankaccounts
+currentURLhttps://www.australianunity.com.au/
+done: NavigateToSteps.WhenINavigateTo(&quot;banking/bankaccounts&quot;) (3.4s)
+
+</pre>
+                                <br />
+                                <a href="./Screenshots\tmp56E9.png" target="_blank"><img src="./Screenshots\tmp56E9.png" width="150"></a>
+                        </td>
+                        <td>Succeeded in 4.515s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then I should see title Bank Accounts</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Navigate and Validate UI, Variant 0] -->
+                                <pre class="log">Current TitleBank Accounts
+done: NavigateToSteps.ThenIShouldSeeTitle(&quot;Bank Accounts&quot;) (0.0s)
+
+</pre>
+                                <br />
+                                <a href="./Screenshots\tmp5A93.png" target="_blank"><img src="./Screenshots\tmp5A93.png" width="150"></a>
+                        </td>
+                        <td>Succeeded in 0.94s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">And I validate UI with previous version of production and banking/bankaccounts</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Navigate and Validate UI, Variant 0] -->
+                                <pre class="log">Start of Applitools
+After Eyes Open
+After Eyes Check
+After Eyes Close
+[ERR]System.IO.FileNotFoundException: Could not load file or assembly &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;. The system cannot find the file specified.
+[ERR]File name: &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;
+[ERR] ---&gt; System.IO.FileNotFoundException: Could not load file or assembly &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;. The system cannot find the file specified.
+[ERR]File name: &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;
+[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark&amp; stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName(AssemblyName assemblyName)
+[ERR]   at TechTalk.SpecRun.Framework.FrameworkDependent.AssemblyHelper.Load(AssemblyName assemblyName)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.ResolveUsingLoad(AssemblyName assemblyName)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.Resolve(IntPtr gchManagedAssemblyLoadContext, AssemblyName assemblyName)
+[ERR]   at Applitools.Ufg.DomAnalyzer.ParseSVG_(TextualDataResource tdr, Dictionary`2 allResourceUris, Logger logger, ConcurrentDictionary`2 cache)
+[ERR]   at Applitools.Ufg.DomAnalyzer.GetAndParseResource_(FrameData frameData, RGridResource blob, Uri baseUrl, Dictionary`2 resourceUrls, Logger logger, IDebugResourceWriter debugResourceWriter, ConcurrentDictionary`2 cache)
+[ERR]System.IO.FileNotFoundException: Could not load file or assembly &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;. The system cannot find the file specified.
+[ERR]File name: &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;
+[ERR] ---&gt; System.IO.FileNotFoundException: Could not load file or assembly &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;. The system cannot find the file specified.
+[ERR]File name: &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;
+[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark&amp; stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName(AssemblyName assemblyName)
+[ERR]   at TechTalk.SpecRun.Framework.FrameworkDependent.AssemblyHelper.Load(AssemblyName assemblyName)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.ResolveUsingLoad(AssemblyName assemblyName)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.Resolve(IntPtr gchManagedAssemblyLoadContext, AssemblyName assemblyName)
+[ERR]   at Applitools.Ufg.DomAnalyzer.ParseSVG_(TextualDataResource tdr, Dictionary`2 allResourceUris, Logger logger, ConcurrentDictionary`2 cache)
+[ERR]   at Applitools.Ufg.DomAnalyzer.GetAndParseResource_(FrameData frameData, RGridResource blob, Uri baseUrl, Dictionary`2 resourceUrls, Logger logger, IDebugResourceWriter debugResourceWriter, ConcurrentDictionary`2 cache)
+[ERR]System.IO.FileNotFoundException: Could not load file or assembly &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;. The system cannot find the file specified.
+[ERR]File name: &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;
+[ERR] ---&gt; System.IO.FileNotFoundException: Could not load file or assembly &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;. The system cannot find the file specified.
+[ERR]File name: &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;
+[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark&amp; stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName(AssemblyName assemblyName)
+[ERR]   at TechTalk.SpecRun.Framework.FrameworkDependent.AssemblyHelper.Load(AssemblyName assemblyName)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.ResolveUsingLoad(AssemblyName assemblyName)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.Resolve(IntPtr gchManagedAssemblyLoadContext, AssemblyName assemblyName)
+[ERR]   at Applitools.Ufg.DomAnalyzer.ParseSVG_(TextualDataResource tdr, Dictionary`2 allResourceUris, Logger logger, ConcurrentDictionary`2 cache)
+[ERR]   at Applitools.Ufg.DomAnalyzer.GetAndParseResource_(FrameData frameData, RGridResource blob, Uri baseUrl, Dictionary`2 resourceUrls, Logger logger, IDebugResourceWriter debugResourceWriter, ConcurrentDictionary`2 cache)
+[ERR]System.IO.FileNotFoundException: Could not load file or assembly &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;. The system cannot find the file specified.
+[ERR]File name: &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;
+[ERR] ---&gt; System.IO.FileNotFoundException: Could not load file or assembly &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;. The system cannot find the file specified.
+[ERR]File name: &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;
+[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark&amp; stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName(AssemblyName assemblyName)
+[ERR]   at TechTalk.SpecRun.Framework.FrameworkDependent.AssemblyHelper.Load(AssemblyName assemblyName)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.ResolveUsingLoad(AssemblyName assemblyName)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.Resolve(IntPtr gchManagedAssemblyLoadContext, AssemblyName assemblyName)
+[ERR]   at Applitools.Ufg.DomAnalyzer.ParseSVG_(TextualDataResource tdr, Dictionary`2 allResourceUris, Logger logger, ConcurrentDictionary`2 cache)
+[ERR]   at Applitools.Ufg.DomAnalyzer.GetAndParseResource_(FrameData frameData, RGridResource blob, Uri baseUrl, Dictionary`2 resourceUrls, Logger logger, IDebugResourceWriter debugResourceWriter, ConcurrentDictionary`2 cache)
+[ERR]System.IO.FileNotFoundException: Could not load file or assembly &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;. The system cannot find the file specified.
+[ERR]File name: &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;
+[ERR] ---&gt; System.IO.FileNotFoundException: Could not load file or assembly &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;. The system cannot find the file specified.
+[ERR]File name: &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;
+[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark&amp; stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName(AssemblyName assemblyName)
+[ERR]   at TechTalk.SpecRun.Framework.FrameworkDependent.AssemblyHelper.Load(AssemblyName assemblyName)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.ResolveUsingLoad(AssemblyName assemblyName)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.Resolve(IntPtr gchManagedAssemblyLoadContext, AssemblyName assemblyName)
+[ERR]   at Applitools.Ufg.DomAnalyzer.ParseSVG_(TextualDataResource tdr, Dictionary`2 allResourceUris, Logger logger, ConcurrentDictionary`2 cache)
+[ERR]   at Applitools.Ufg.DomAnalyzer.GetAndParseResource_(FrameData frameData, RGridResource blob, Uri baseUrl, Dictionary`2 resourceUrls, Logger logger, IDebugResourceWriter debugResourceWriter, ConcurrentDictionary`2 cache)
+result summary {
+	all results=
+		TestResultContainer {
+ testResults={&quot;secretToken&quot;:&quot;L1gMoI9zTZ5fXesZEU5dIJdxhrpdyubJK63xYXbrS1084110&quot;,&quot;id&quot;:&quot;00000251774392656435&quot;,&quot;batchId&quot;:&quot;00000251774392657122&quot;,&quot;batchName&quot;:&quot;Ultrafast Batch&quot;,&quot;branchName&quot;:&quot;default&quot;,&quot;appName&quot;:&quot;Australian Unity&quot;,&quot;name&quot;:&quot;banking/bankaccounts&quot;,&quot;isDifferent&quot;:false,&quot;isAborted&quot;:false,&quot;url&quot;:&quot;https://eyes.applitools.com/app/batches/00000251774392657122/00000251774392656435?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;isNew&quot;:true,&quot;status&quot;:&quot;Passed&quot;,&quot;isPassed&quot;:true,&quot;steps&quot;:1,&quot;matches&quot;:0,&quot;mismatches&quot;:0,&quot;missing&quot;:0,&quot;exactMatches&quot;:0,&quot;strictMatches&quot;:0,&quot;contentMatches&quot;:0,&quot;layoutMatches&quot;:0,&quot;noneMatches&quot;:0,&quot;new&quot;:1,&quot;appUrls&quot;:{&quot;batch&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;session&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122/00000251774392656435?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;},&quot;apiUrls&quot;:{&quot;batch&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122&quot;,&quot;session&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392656435&quot;},&quot;hostApp&quot;:&quot;Chrome&quot;,&quot;hostOS&quot;:&quot;Linux&quot;,&quot;stepsInfo&quot;:[{&quot;name&quot;:&quot;banking/bankaccounts&quot;,&quot;isDifferent&quot;:false,&quot;hasBaselineImage&quot;:false,&quot;hasCurrentImage&quot;:true,&quot;hasCheckpointImage&quot;:true,&quot;apiUrls&quot;:{&quot;currentImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392656435/steps/1/images/checkpoint&quot;,&quot;checkpointImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392656435/steps/1/images/checkpoint&quot;,&quot;checkpointImageThumbnail&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392656435/steps/1/images/checkpoint-thumbnail&quot;},&quot;appUrls&quot;:{&quot;step&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122/00000251774392656435/steps/1?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;stepEditor&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122/00000251774392656435/steps/1/edit?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;}}],&quot;startedAt&quot;:&quot;2021-08-02T22:42:22.8619489+10:00&quot;,&quot;duration&quot;:48,&quot;hostDisplaySize&quot;:{&quot;width&quot;:800,&quot;height&quot;:600},&quot;baselineId&quot;:&quot;k~!~!e44875d3-c449-431a-8c84-7bcd82cb0e9f~!ae60ded1-f3d6-473c-a13f-d411a6d0acf2~!5rxfYQ7HQGGGUrGFezeKscjjlHIoG3ujEgtzjbINnxw_~!&quot;,&quot;defaultMatchSettings&quot;:{&quot;matchLevel&quot;:&quot;Strict&quot;,&quot;ignore&quot;:[],&quot;strict&quot;:[],&quot;content&quot;:[],&quot;layout&quot;:[],&quot;floating&quot;:[],&quot;accessibility&quot;:[],&quot;ignoreCaret&quot;:true,&quot;useDom&quot;:false,&quot;enablePatterns&quot;:false,&quot;ignoreDisplacements&quot;:false}}
+ browserInfo = DesktopBrowserInfo {ViewportSize={Width=800, Height=600}, BrowserType=CHROME}
+ exception = }
+		TestResultContainer {
+ testResults={&quot;secretToken&quot;:&quot;LrfK9gyPyQRbiYaedBlnDnZUmpc0d4NWVlhA7uUsv4c110&quot;,&quot;id&quot;:&quot;00000251774392656389&quot;,&quot;batchId&quot;:&quot;00000251774392657122&quot;,&quot;batchName&quot;:&quot;Ultrafast Batch&quot;,&quot;branchName&quot;:&quot;default&quot;,&quot;appName&quot;:&quot;Australian Unity&quot;,&quot;name&quot;:&quot;banking/bankaccounts&quot;,&quot;isDifferent&quot;:false,&quot;isAborted&quot;:false,&quot;url&quot;:&quot;https://eyes.applitools.com/app/batches/00000251774392657122/00000251774392656389?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;isNew&quot;:true,&quot;status&quot;:&quot;Passed&quot;,&quot;isPassed&quot;:true,&quot;steps&quot;:1,&quot;matches&quot;:0,&quot;mismatches&quot;:0,&quot;missing&quot;:0,&quot;exactMatches&quot;:0,&quot;strictMatches&quot;:0,&quot;contentMatches&quot;:0,&quot;layoutMatches&quot;:0,&quot;noneMatches&quot;:0,&quot;new&quot;:1,&quot;appUrls&quot;:{&quot;batch&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;session&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122/00000251774392656389?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;},&quot;apiUrls&quot;:{&quot;batch&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122&quot;,&quot;session&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392656389&quot;},&quot;hostApp&quot;:&quot;Firefox&quot;,&quot;hostOS&quot;:&quot;Linux&quot;,&quot;stepsInfo&quot;:[{&quot;name&quot;:&quot;banking/bankaccounts&quot;,&quot;isDifferent&quot;:false,&quot;hasBaselineImage&quot;:false,&quot;hasCurrentImage&quot;:true,&quot;hasCheckpointImage&quot;:true,&quot;apiUrls&quot;:{&quot;currentImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392656389/steps/1/images/checkpoint&quot;,&quot;checkpointImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392656389/steps/1/images/checkpoint&quot;,&quot;checkpointImageThumbnail&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392656389/steps/1/images/checkpoint-thumbnail&quot;},&quot;appUrls&quot;:{&quot;step&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122/00000251774392656389/steps/1?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;stepEditor&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122/00000251774392656389/steps/1/edit?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;}}],&quot;startedAt&quot;:&quot;2021-08-02T22:42:23.5165787+10:00&quot;,&quot;duration&quot;:45,&quot;hostDisplaySize&quot;:{&quot;width&quot;:700,&quot;height&quot;:500},&quot;baselineId&quot;:&quot;k~!~!e44875d3-c449-431a-8c84-7bcd82cb0e9f~!ae60ded1-f3d6-473c-a13f-d411a6d0acf2~!Gk1VKd6I7amynOVguJaMv5lGZNJyHgT41Gx04iaGzCs_~!&quot;,&quot;defaultMatchSettings&quot;:{&quot;matchLevel&quot;:&quot;Strict&quot;,&quot;ignore&quot;:[],&quot;strict&quot;:[],&quot;content&quot;:[],&quot;layout&quot;:[],&quot;floating&quot;:[],&quot;accessibility&quot;:[],&quot;ignoreCaret&quot;:true,&quot;useDom&quot;:false,&quot;enablePatterns&quot;:false,&quot;ignoreDisplacements&quot;:false}}
+ browserInfo = DesktopBrowserInfo {ViewportSize={Width=700, Height=500}, BrowserType=FIREFOX}
+ exception = }
+		TestResultContainer {
+ testResults={&quot;secretToken&quot;:&quot;MwLu101FbkEtOFCJ37gTWHH1iCSCxNHJbbMUjaT6105DT0M110&quot;,&quot;id&quot;:&quot;00000251774392655532&quot;,&quot;batchId&quot;:&quot;00000251774392657122&quot;,&quot;batchName&quot;:&quot;Ultrafast Batch&quot;,&quot;branchName&quot;:&quot;default&quot;,&quot;appName&quot;:&quot;Australian Unity&quot;,&quot;name&quot;:&quot;banking/bankaccounts&quot;,&quot;isDifferent&quot;:false,&quot;isAborted&quot;:false,&quot;url&quot;:&quot;https://eyes.applitools.com/app/batches/00000251774392657122/00000251774392655532?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;isNew&quot;:true,&quot;status&quot;:&quot;Passed&quot;,&quot;isPassed&quot;:true,&quot;steps&quot;:1,&quot;matches&quot;:0,&quot;mismatches&quot;:0,&quot;missing&quot;:0,&quot;exactMatches&quot;:0,&quot;strictMatches&quot;:0,&quot;contentMatches&quot;:0,&quot;layoutMatches&quot;:0,&quot;noneMatches&quot;:0,&quot;new&quot;:1,&quot;appUrls&quot;:{&quot;batch&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;session&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122/00000251774392655532?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;},&quot;apiUrls&quot;:{&quot;batch&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122&quot;,&quot;session&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392655532&quot;},&quot;hostApp&quot;:&quot;IE&quot;,&quot;hostOS&quot;:&quot;Windows 10.0&quot;,&quot;stepsInfo&quot;:[{&quot;name&quot;:&quot;banking/bankaccounts&quot;,&quot;isDifferent&quot;:false,&quot;hasBaselineImage&quot;:false,&quot;hasCurrentImage&quot;:true,&quot;hasCheckpointImage&quot;:true,&quot;apiUrls&quot;:{&quot;currentImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392655532/steps/1/images/checkpoint&quot;,&quot;checkpointImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392655532/steps/1/images/checkpoint&quot;,&quot;checkpointImageThumbnail&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392655532/steps/1/images/checkpoint-thumbnail&quot;},&quot;appUrls&quot;:{&quot;step&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122/00000251774392655532/steps/1?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;stepEditor&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122/00000251774392655532/steps/1/edit?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;}}],&quot;startedAt&quot;:&quot;2021-08-02T22:42:24.170703+10:00&quot;,&quot;duration&quot;:49,&quot;hostDisplaySize&quot;:{&quot;width&quot;:1600,&quot;height&quot;:1200},&quot;baselineId&quot;:&quot;k~!~!e44875d3-c449-431a-8c84-7bcd82cb0e9f~!ae60ded1-f3d6-473c-a13f-d411a6d0acf2~!vTym9EnPsKAJo61arOzanTfVf9zTLXkQIPVXcAykUlo_~!&quot;,&quot;defaultMatchSettings&quot;:{&quot;matchLevel&quot;:&quot;Strict&quot;,&quot;ignore&quot;:[],&quot;strict&quot;:[],&quot;content&quot;:[],&quot;layout&quot;:[],&quot;floating&quot;:[],&quot;accessibility&quot;:[],&quot;ignoreCaret&quot;:true,&quot;useDom&quot;:false,&quot;enablePatterns&quot;:false,&quot;ignoreDisplacements&quot;:false}}
+ browserInfo = DesktopBrowserInfo {ViewportSize={Width=1600, Height=1200}, BrowserType=IE_11}
+ exception = }
+		TestResultContainer {
+ testResults={&quot;secretToken&quot;:&quot;F9FtmBPDY106XH95lYt9SIm0qfaxXophrCRhKTYJ2nT7Y110&quot;,&quot;id&quot;:&quot;00000251774392656247&quot;,&quot;batchId&quot;:&quot;00000251774392657122&quot;,&quot;batchName&quot;:&quot;Ultrafast Batch&quot;,&quot;branchName&quot;:&quot;default&quot;,&quot;appName&quot;:&quot;Australian Unity&quot;,&quot;name&quot;:&quot;banking/bankaccounts&quot;,&quot;isDifferent&quot;:false,&quot;isAborted&quot;:false,&quot;url&quot;:&quot;https://eyes.applitools.com/app/batches/00000251774392657122/00000251774392656247?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;isNew&quot;:true,&quot;status&quot;:&quot;Passed&quot;,&quot;isPassed&quot;:true,&quot;steps&quot;:1,&quot;matches&quot;:0,&quot;mismatches&quot;:0,&quot;missing&quot;:0,&quot;exactMatches&quot;:0,&quot;strictMatches&quot;:0,&quot;contentMatches&quot;:0,&quot;layoutMatches&quot;:0,&quot;noneMatches&quot;:0,&quot;new&quot;:1,&quot;appUrls&quot;:{&quot;batch&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;session&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122/00000251774392656247?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;},&quot;apiUrls&quot;:{&quot;batch&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122&quot;,&quot;session&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392656247&quot;},&quot;hostApp&quot;:&quot;Edge&quot;,&quot;hostOS&quot;:&quot;Windows 10.0&quot;,&quot;stepsInfo&quot;:[{&quot;name&quot;:&quot;banking/bankaccounts&quot;,&quot;isDifferent&quot;:false,&quot;hasBaselineImage&quot;:false,&quot;hasCurrentImage&quot;:true,&quot;hasCheckpointImage&quot;:true,&quot;apiUrls&quot;:{&quot;currentImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392656247/steps/1/images/checkpoint&quot;,&quot;checkpointImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392656247/steps/1/images/checkpoint&quot;,&quot;checkpointImageThumbnail&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392656247/steps/1/images/checkpoint-thumbnail&quot;},&quot;appUrls&quot;:{&quot;step&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122/00000251774392656247/steps/1?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;stepEditor&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122/00000251774392656247/steps/1/edit?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;}}],&quot;startedAt&quot;:&quot;2021-08-02T22:42:23.549358+10:00&quot;,&quot;duration&quot;:46,&quot;hostDisplaySize&quot;:{&quot;width&quot;:1024,&quot;height&quot;:768},&quot;baselineId&quot;:&quot;k~!~!e44875d3-c449-431a-8c84-7bcd82cb0e9f~!ae60ded1-f3d6-473c-a13f-d411a6d0acf2~!nFIoJG9Z_G6b7GQWMEUI2mHhmONXtVtMO_BP8dbLYGQ_~!&quot;,&quot;defaultMatchSettings&quot;:{&quot;matchLevel&quot;:&quot;Strict&quot;,&quot;ignore&quot;:[],&quot;strict&quot;:[],&quot;content&quot;:[],&quot;layout&quot;:[],&quot;floating&quot;:[],&quot;accessibility&quot;:[],&quot;ignoreCaret&quot;:true,&quot;useDom&quot;:false,&quot;enablePatterns&quot;:false,&quot;ignoreDisplacements&quot;:false}}
+ browserInfo = DesktopBrowserInfo {ViewportSize={Width=1024, Height=768}, BrowserType=EDGE_CHROMIUM}
+ exception = }
+		TestResultContainer {
+ testResults={&quot;secretToken&quot;:&quot;97KVdxGqAlkWOB4MsZl5zgQdkRUEF0jS4o5qTFYYZmfE110&quot;,&quot;id&quot;:&quot;00000251774392653588&quot;,&quot;batchId&quot;:&quot;00000251774392657122&quot;,&quot;batchName&quot;:&quot;Ultrafast Batch&quot;,&quot;branchName&quot;:&quot;default&quot;,&quot;appName&quot;:&quot;Australian Unity&quot;,&quot;name&quot;:&quot;banking/bankaccounts&quot;,&quot;isDifferent&quot;:false,&quot;isAborted&quot;:false,&quot;url&quot;:&quot;https://eyes.applitools.com/app/batches/00000251774392657122/00000251774392653588?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;isNew&quot;:true,&quot;status&quot;:&quot;Passed&quot;,&quot;isPassed&quot;:true,&quot;steps&quot;:1,&quot;matches&quot;:0,&quot;mismatches&quot;:0,&quot;missing&quot;:0,&quot;exactMatches&quot;:0,&quot;strictMatches&quot;:0,&quot;contentMatches&quot;:0,&quot;layoutMatches&quot;:0,&quot;noneMatches&quot;:0,&quot;new&quot;:1,&quot;appUrls&quot;:{&quot;batch&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;session&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122/00000251774392653588?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;},&quot;apiUrls&quot;:{&quot;batch&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122&quot;,&quot;session&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392653588&quot;},&quot;hostApp&quot;:&quot;Safari&quot;,&quot;hostOS&quot;:&quot;Mac OS X 11.0&quot;,&quot;stepsInfo&quot;:[{&quot;name&quot;:&quot;banking/bankaccounts&quot;,&quot;isDifferent&quot;:false,&quot;hasBaselineImage&quot;:false,&quot;hasCurrentImage&quot;:true,&quot;hasCheckpointImage&quot;:true,&quot;apiUrls&quot;:{&quot;currentImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392653588/steps/1/images/checkpoint&quot;,&quot;checkpointImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392653588/steps/1/images/checkpoint&quot;,&quot;checkpointImageThumbnail&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392653588/steps/1/images/checkpoint-thumbnail&quot;},&quot;appUrls&quot;:{&quot;step&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122/00000251774392653588/steps/1?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;stepEditor&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122/00000251774392653588/steps/1/edit?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;}}],&quot;startedAt&quot;:&quot;2021-08-02T22:42:25.7557242+10:00&quot;,&quot;duration&quot;:50,&quot;hostDisplaySize&quot;:{&quot;width&quot;:800,&quot;height&quot;:600},&quot;baselineId&quot;:&quot;k~!~!e44875d3-c449-431a-8c84-7bcd82cb0e9f~!ae60ded1-f3d6-473c-a13f-d411a6d0acf2~!1IzpK2_XPVESfWT_d3NQIe1eFFwXZXmtxTKyZkaLKIQ_~!&quot;,&quot;defaultMatchSettings&quot;:{&quot;matchLevel&quot;:&quot;Strict&quot;,&quot;ignore&quot;:[],&quot;strict&quot;:[],&quot;content&quot;:[],&quot;layout&quot;:[],&quot;floating&quot;:[],&quot;accessibility&quot;:[],&quot;ignoreCaret&quot;:true,&quot;useDom&quot;:false,&quot;enablePatterns&quot;:false,&quot;ignoreDisplacements&quot;:false}}
+ browserInfo = DesktopBrowserInfo {ViewportSize={Width=800, Height=600}, BrowserType=SAFARI}
+ exception = }
+		TestResultContainer {
+ testResults={&quot;secretToken&quot;:&quot;LjyhpKn7TG107DLQRi4nqr1023omOSl36NY5s972MXykL108k110&quot;,&quot;id&quot;:&quot;00000251774392655999&quot;,&quot;batchId&quot;:&quot;00000251774392657122&quot;,&quot;batchName&quot;:&quot;Ultrafast Batch&quot;,&quot;branchName&quot;:&quot;default&quot;,&quot;appName&quot;:&quot;Australian Unity&quot;,&quot;name&quot;:&quot;banking/bankaccounts&quot;,&quot;isDifferent&quot;:false,&quot;isAborted&quot;:false,&quot;url&quot;:&quot;https://eyes.applitools.com/app/batches/00000251774392657122/00000251774392655999?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;isNew&quot;:true,&quot;status&quot;:&quot;Passed&quot;,&quot;isPassed&quot;:true,&quot;steps&quot;:1,&quot;matches&quot;:0,&quot;mismatches&quot;:0,&quot;missing&quot;:0,&quot;exactMatches&quot;:0,&quot;strictMatches&quot;:0,&quot;contentMatches&quot;:0,&quot;layoutMatches&quot;:0,&quot;noneMatches&quot;:0,&quot;new&quot;:1,&quot;appUrls&quot;:{&quot;batch&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;session&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122/00000251774392655999?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;},&quot;apiUrls&quot;:{&quot;batch&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122&quot;,&quot;session&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392655999&quot;},&quot;hostApp&quot;:&quot;Chrome&quot;,&quot;hostOS&quot;:&quot;Linux&quot;,&quot;stepsInfo&quot;:[{&quot;name&quot;:&quot;banking/bankaccounts&quot;,&quot;isDifferent&quot;:false,&quot;hasBaselineImage&quot;:false,&quot;hasCurrentImage&quot;:true,&quot;hasCheckpointImage&quot;:true,&quot;apiUrls&quot;:{&quot;currentImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392655999/steps/1/images/checkpoint&quot;,&quot;checkpointImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392655999/steps/1/images/checkpoint&quot;,&quot;checkpointImageThumbnail&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392655999/steps/1/images/checkpoint-thumbnail&quot;},&quot;appUrls&quot;:{&quot;step&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122/00000251774392655999/steps/1?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;stepEditor&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122/00000251774392655999/steps/1/edit?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;}}],&quot;startedAt&quot;:&quot;2021-08-02T22:42:23.9384316+10:00&quot;,&quot;duration&quot;:45,&quot;hostDisplaySize&quot;:{&quot;width&quot;:375,&quot;height&quot;:812},&quot;baselineId&quot;:&quot;k~!~!e44875d3-c449-431a-8c84-7bcd82cb0e9f~!ae60ded1-f3d6-473c-a13f-d411a6d0acf2~!bxiGG5Ec2SPYFF5SVdcTSa859XsWC4PthtFRwvT8A8M_~!&quot;,&quot;defaultMatchSettings&quot;:{&quot;matchLevel&quot;:&quot;Strict&quot;,&quot;ignore&quot;:[],&quot;strict&quot;:[],&quot;content&quot;:[],&quot;layout&quot;:[],&quot;floating&quot;:[],&quot;accessibility&quot;:[],&quot;ignoreCaret&quot;:true,&quot;useDom&quot;:false,&quot;enablePatterns&quot;:false,&quot;ignoreDisplacements&quot;:false}}
+ browserInfo = iPhone_X (Portrait)
+ exception = }
+		TestResultContainer {
+ testResults={&quot;secretToken&quot;:&quot;cKJpuvi104ef8D1L1116kxh5mPD7UqklACQ2gXRpJOsc48U110&quot;,&quot;id&quot;:&quot;00000251774392655700&quot;,&quot;batchId&quot;:&quot;00000251774392657122&quot;,&quot;batchName&quot;:&quot;Ultrafast Batch&quot;,&quot;branchName&quot;:&quot;default&quot;,&quot;appName&quot;:&quot;Australian Unity&quot;,&quot;name&quot;:&quot;banking/bankaccounts&quot;,&quot;isDifferent&quot;:false,&quot;isAborted&quot;:false,&quot;url&quot;:&quot;https://eyes.applitools.com/app/batches/00000251774392657122/00000251774392655700?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;isNew&quot;:true,&quot;status&quot;:&quot;Passed&quot;,&quot;isPassed&quot;:true,&quot;steps&quot;:1,&quot;matches&quot;:0,&quot;mismatches&quot;:0,&quot;missing&quot;:0,&quot;exactMatches&quot;:0,&quot;strictMatches&quot;:0,&quot;contentMatches&quot;:0,&quot;layoutMatches&quot;:0,&quot;noneMatches&quot;:0,&quot;new&quot;:1,&quot;appUrls&quot;:{&quot;batch&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;session&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122/00000251774392655700?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;},&quot;apiUrls&quot;:{&quot;batch&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122&quot;,&quot;session&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392655700&quot;},&quot;hostApp&quot;:&quot;Chrome&quot;,&quot;hostOS&quot;:&quot;Linux&quot;,&quot;stepsInfo&quot;:[{&quot;name&quot;:&quot;banking/bankaccounts&quot;,&quot;isDifferent&quot;:false,&quot;hasBaselineImage&quot;:false,&quot;hasCurrentImage&quot;:true,&quot;hasCheckpointImage&quot;:true,&quot;apiUrls&quot;:{&quot;currentImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392655700/steps/1/images/checkpoint&quot;,&quot;checkpointImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392655700/steps/1/images/checkpoint&quot;,&quot;checkpointImageThumbnail&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392657122/00000251774392655700/steps/1/images/checkpoint-thumbnail&quot;},&quot;appUrls&quot;:{&quot;step&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122/00000251774392655700/steps/1?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;stepEditor&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392657122/00000251774392655700/steps/1/edit?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;}}],&quot;startedAt&quot;:&quot;2021-08-02T22:42:24.2213352+10:00&quot;,&quot;duration&quot;:44,&quot;hostDisplaySize&quot;:{&quot;width&quot;:411,&quot;height&quot;:731},&quot;baselineId&quot;:&quot;k~!~!e44875d3-c449-431a-8c84-7bcd82cb0e9f~!ae60ded1-f3d6-473c-a13f-d411a6d0acf2~!t5_yHKajqyQpbI2KV_xCrLfj8THcro9e2FQ7s1e3u4E_~!&quot;,&quot;defaultMatchSettings&quot;:{&quot;matchLevel&quot;:&quot;Strict&quot;,&quot;ignore&quot;:[],&quot;strict&quot;:[],&quot;content&quot;:[],&quot;layout&quot;:[],&quot;floating&quot;:[],&quot;accessibility&quot;:[],&quot;ignoreCaret&quot;:true,&quot;useDom&quot;:false,&quot;enablePatterns&quot;:false,&quot;ignoreDisplacements&quot;:false}}
+ browserInfo = Pixel_2 (Portrait)
+ exception = }
+	passed=7
+	unresolved=0
+	failed=0
+	exceptions=0
+	mismatches=0
+	missing=0
+	matches=0
+}
+done: NavigateToSteps.ThenIValidateUIWithPreviousVersion(&quot;production&quot;, &quot;banking/bankaccounts&quot;) (64.4s)
+
+</pre>
+                                <br />
+                                <a href="./Screenshots\tmp59F3.png" target="_blank"><img src="./Screenshots\tmp59F3.png" width="150"></a>
+                        </td>
+                        <td>Succeeded in 65.37s</td>
+                    </tr>
+            </table>
+            <a name="t120632071.0" />
+            <h3>Scenario: Navigate and Validate UI, Variant 1 (in TQP.QA.Automation.UI.Test, Australian Unity)</h3>
+            <ul>
+                <li>Status: Succeeded</li>
+                <li>Start time: 2/08/2021 10:43:23 PM</li>
+                <li>Execution time (sec): 48.5879839</li>
+                <li>Thread: #0</li>
+            </ul>
+            <table class="testEvents">
+                <tr>
+                    <th>Steps</th>
+                    <th>Trace</th>
+                    <th>Result</th>
+                </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Given I am on the home page for production</pre>
+                        </td>
+                        <td>
+                            <!-- [TestArrange: Scenario - Navigate and Validate UI, Variant 1] -->
+                                <pre class="log">done: NavigateToSteps.GivenIAmOnTheHomePageFor(&quot;production&quot;) (9.2s)
+
+</pre>
+                                <br />
+                                <a href="./Screenshots\tmp93A2.png" target="_blank"><img src="./Screenshots\tmp93A2.png" width="150"></a>
+                        </td>
+                        <td>Succeeded in 10.293s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">When I navigate to banking/home-loans</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAct: Scenario - Navigate and Validate UI, Variant 1] -->
+                                <pre class="log">URL here is banking/home-loans
+currentURLhttps://www.australianunity.com.au/
+done: NavigateToSteps.WhenINavigateTo(&quot;banking/home-loans&quot;) (3.1s)
+
+</pre>
+                                <br />
+                                <a href="./Screenshots\tmpA372.png" target="_blank"><img src="./Screenshots\tmpA372.png" width="150"></a>
+                        </td>
+                        <td>Succeeded in 4.051s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">Then I should see title Home Loans</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Navigate and Validate UI, Variant 1] -->
+                                <pre class="log">Current TitleOwner Occupier Home Loans
+done: NavigateToSteps.ThenIShouldSeeTitle(&quot;Home Loans&quot;) (0.0s)
+
+</pre>
+                                <br />
+                                <a href="./Screenshots\tmpA680.png" target="_blank"><img src="./Screenshots\tmpA680.png" width="150"></a>
+                        </td>
+                        <td>Succeeded in 0.784s</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <pre class="log">And I validate UI with previous version of production and banking/home-loans</pre>
+                        </td>
+                        <td>
+                            <!-- [TestAssert: Scenario - Navigate and Validate UI, Variant 1] -->
+                                <pre class="log">Start of Applitools
+After Eyes Open
+After Eyes Check
+After Eyes Close
+[ERR]System.IO.FileNotFoundException: Could not load file or assembly &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;. The system cannot find the file specified.
+[ERR]File name: &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;
+[ERR] ---&gt; System.IO.FileNotFoundException: Could not load file or assembly &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;. The system cannot find the file specified.
+[ERR]File name: &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;
+[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark&amp; stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName(AssemblyName assemblyName)
+[ERR]   at TechTalk.SpecRun.Framework.FrameworkDependent.AssemblyHelper.Load(AssemblyName assemblyName)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.ResolveUsingLoad(AssemblyName assemblyName)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.Resolve(IntPtr gchManagedAssemblyLoadContext, AssemblyName assemblyName)
+[ERR]   at Applitools.Ufg.DomAnalyzer.ParseSVG_(TextualDataResource tdr, Dictionary`2 allResourceUris, Logger logger, ConcurrentDictionary`2 cache)
+[ERR]   at Applitools.Ufg.DomAnalyzer.GetAndParseResource_(FrameData frameData, RGridResource blob, Uri baseUrl, Dictionary`2 resourceUrls, Logger logger, IDebugResourceWriter debugResourceWriter, ConcurrentDictionary`2 cache)
+[ERR]System.IO.FileNotFoundException: Could not load file or assembly &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;. The system cannot find the file specified.
+[ERR]File name: &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;
+[ERR] ---&gt; System.IO.FileNotFoundException: Could not load file or assembly &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;. The system cannot find the file specified.
+[ERR]File name: &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;
+[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark&amp; stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName(AssemblyName assemblyName)
+[ERR]   at TechTalk.SpecRun.Framework.FrameworkDependent.AssemblyHelper.Load(AssemblyName assemblyName)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.ResolveUsingLoad(AssemblyName assemblyName)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.Resolve(IntPtr gchManagedAssemblyLoadContext, AssemblyName assemblyName)
+[ERR]   at Applitools.Ufg.DomAnalyzer.ParseSVG_(TextualDataResource tdr, Dictionary`2 allResourceUris, Logger logger, ConcurrentDictionary`2 cache)
+[ERR]   at Applitools.Ufg.DomAnalyzer.GetAndParseResource_(FrameData frameData, RGridResource blob, Uri baseUrl, Dictionary`2 resourceUrls, Logger logger, IDebugResourceWriter debugResourceWriter, ConcurrentDictionary`2 cache)
+[ERR]System.IO.FileNotFoundException: Could not load file or assembly &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;. The system cannot find the file specified.
+[ERR]File name: &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;
+[ERR] ---&gt; System.IO.FileNotFoundException: Could not load file or assembly &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;. The system cannot find the file specified.
+[ERR]File name: &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;
+[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark&amp; stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName(AssemblyName assemblyName)
+[ERR]   at TechTalk.SpecRun.Framework.FrameworkDependent.AssemblyHelper.Load(AssemblyName assemblyName)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.ResolveUsingLoad(AssemblyName assemblyName)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.Resolve(IntPtr gchManagedAssemblyLoadContext, AssemblyName assemblyName)
+[ERR]   at Applitools.Ufg.DomAnalyzer.ParseSVG_(TextualDataResource tdr, Dictionary`2 allResourceUris, Logger logger, ConcurrentDictionary`2 cache)
+[ERR]   at Applitools.Ufg.DomAnalyzer.GetAndParseResource_(FrameData frameData, RGridResource blob, Uri baseUrl, Dictionary`2 resourceUrls, Logger logger, IDebugResourceWriter debugResourceWriter, ConcurrentDictionary`2 cache)
+[ERR]System.IO.FileNotFoundException: Could not load file or assembly &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;. The system cannot find the file specified.
+[ERR]File name: &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;
+[ERR] ---&gt; System.IO.FileNotFoundException: Could not load file or assembly &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;. The system cannot find the file specified.
+[ERR]File name: &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;
+[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark&amp; stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName(AssemblyName assemblyName)
+[ERR]   at TechTalk.SpecRun.Framework.FrameworkDependent.AssemblyHelper.Load(AssemblyName assemblyName)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.ResolveUsingLoad(AssemblyName assemblyName)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.Resolve(IntPtr gchManagedAssemblyLoadContext, AssemblyName assemblyName)
+[ERR]   at Applitools.Ufg.DomAnalyzer.ParseSVG_(TextualDataResource tdr, Dictionary`2 allResourceUris, Logger logger, ConcurrentDictionary`2 cache)
+[ERR]   at Applitools.Ufg.DomAnalyzer.GetAndParseResource_(FrameData frameData, RGridResource blob, Uri baseUrl, Dictionary`2 resourceUrls, Logger logger, IDebugResourceWriter debugResourceWriter, ConcurrentDictionary`2 cache)
+[ERR]System.IO.FileNotFoundException: Could not load file or assembly &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;. The system cannot find the file specified.
+[ERR]File name: &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;
+[ERR] ---&gt; System.IO.FileNotFoundException: Could not load file or assembly &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;. The system cannot find the file specified.
+[ERR]File name: &#39;HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a&#39;
+[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark&amp; stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName(AssemblyName assemblyName)
+[ERR]   at TechTalk.SpecRun.Framework.FrameworkDependent.AssemblyHelper.Load(AssemblyName assemblyName)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.ResolveUsingLoad(AssemblyName assemblyName)
+[ERR]   at System.Runtime.Loader.AssemblyLoadContext.Resolve(IntPtr gchManagedAssemblyLoadContext, AssemblyName assemblyName)
+[ERR]   at Applitools.Ufg.DomAnalyzer.ParseSVG_(TextualDataResource tdr, Dictionary`2 allResourceUris, Logger logger, ConcurrentDictionary`2 cache)
+[ERR]   at Applitools.Ufg.DomAnalyzer.GetAndParseResource_(FrameData frameData, RGridResource blob, Uri baseUrl, Dictionary`2 resourceUrls, Logger logger, IDebugResourceWriter debugResourceWriter, ConcurrentDictionary`2 cache)
+result summary {
+	all results=
+		TestResultContainer {
+ testResults={&quot;secretToken&quot;:&quot;Mza1005JIm8sxdTL3EwU1jM8TWSRz8fKBMYrMQDggPHGU110&quot;,&quot;id&quot;:&quot;00000251774392573145&quot;,&quot;batchId&quot;:&quot;00000251774392573772&quot;,&quot;batchName&quot;:&quot;Ultrafast Batch&quot;,&quot;branchName&quot;:&quot;default&quot;,&quot;appName&quot;:&quot;Australian Unity&quot;,&quot;name&quot;:&quot;banking/home-loans&quot;,&quot;isDifferent&quot;:false,&quot;isAborted&quot;:false,&quot;url&quot;:&quot;https://eyes.applitools.com/app/batches/00000251774392573772/00000251774392573145?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;isNew&quot;:true,&quot;status&quot;:&quot;Passed&quot;,&quot;isPassed&quot;:true,&quot;steps&quot;:1,&quot;matches&quot;:0,&quot;mismatches&quot;:0,&quot;missing&quot;:0,&quot;exactMatches&quot;:0,&quot;strictMatches&quot;:0,&quot;contentMatches&quot;:0,&quot;layoutMatches&quot;:0,&quot;noneMatches&quot;:0,&quot;new&quot;:1,&quot;appUrls&quot;:{&quot;batch&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;session&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772/00000251774392573145?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;},&quot;apiUrls&quot;:{&quot;batch&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772&quot;,&quot;session&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392573145&quot;},&quot;hostApp&quot;:&quot;Chrome&quot;,&quot;hostOS&quot;:&quot;Linux&quot;,&quot;stepsInfo&quot;:[{&quot;name&quot;:&quot;banking/home-loans&quot;,&quot;isDifferent&quot;:false,&quot;hasBaselineImage&quot;:false,&quot;hasCurrentImage&quot;:true,&quot;hasCheckpointImage&quot;:true,&quot;apiUrls&quot;:{&quot;currentImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392573145/steps/1/images/checkpoint&quot;,&quot;checkpointImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392573145/steps/1/images/checkpoint&quot;,&quot;checkpointImageThumbnail&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392573145/steps/1/images/checkpoint-thumbnail&quot;},&quot;appUrls&quot;:{&quot;step&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772/00000251774392573145/steps/1?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;stepEditor&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772/00000251774392573145/steps/1/edit?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;}}],&quot;startedAt&quot;:&quot;2021-08-02T22:43:46.4639404+10:00&quot;,&quot;duration&quot;:14,&quot;hostDisplaySize&quot;:{&quot;width&quot;:800,&quot;height&quot;:600},&quot;baselineId&quot;:&quot;k~!~!e44875d3-c449-431a-8c84-7bcd82cb0e9f~!bc9a041a-4378-46bc-b715-88923aaf4a6f~!5rxfYQ7HQGGGUrGFezeKscjjlHIoG3ujEgtzjbINnxw_~!&quot;,&quot;defaultMatchSettings&quot;:{&quot;matchLevel&quot;:&quot;Strict&quot;,&quot;ignore&quot;:[],&quot;strict&quot;:[],&quot;content&quot;:[],&quot;layout&quot;:[],&quot;floating&quot;:[],&quot;accessibility&quot;:[],&quot;ignoreCaret&quot;:true,&quot;useDom&quot;:false,&quot;enablePatterns&quot;:false,&quot;ignoreDisplacements&quot;:false}}
+ browserInfo = DesktopBrowserInfo {ViewportSize={Width=800, Height=600}, BrowserType=CHROME}
+ exception = }
+		TestResultContainer {
+ testResults={&quot;secretToken&quot;:&quot;9V99CTLbJxsdVfmXdOjNBUPUP106YJZ6mhR99jL4yMBc107oY110&quot;,&quot;id&quot;:&quot;00000251774392573538&quot;,&quot;batchId&quot;:&quot;00000251774392573772&quot;,&quot;batchName&quot;:&quot;Ultrafast Batch&quot;,&quot;branchName&quot;:&quot;default&quot;,&quot;appName&quot;:&quot;Australian Unity&quot;,&quot;name&quot;:&quot;banking/home-loans&quot;,&quot;isDifferent&quot;:false,&quot;isAborted&quot;:false,&quot;url&quot;:&quot;https://eyes.applitools.com/app/batches/00000251774392573772/00000251774392573538?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;isNew&quot;:true,&quot;status&quot;:&quot;Passed&quot;,&quot;isPassed&quot;:true,&quot;steps&quot;:1,&quot;matches&quot;:0,&quot;mismatches&quot;:0,&quot;missing&quot;:0,&quot;exactMatches&quot;:0,&quot;strictMatches&quot;:0,&quot;contentMatches&quot;:0,&quot;layoutMatches&quot;:0,&quot;noneMatches&quot;:0,&quot;new&quot;:1,&quot;appUrls&quot;:{&quot;batch&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;session&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772/00000251774392573538?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;},&quot;apiUrls&quot;:{&quot;batch&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772&quot;,&quot;session&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392573538&quot;},&quot;hostApp&quot;:&quot;Firefox&quot;,&quot;hostOS&quot;:&quot;Linux&quot;,&quot;stepsInfo&quot;:[{&quot;name&quot;:&quot;banking/home-loans&quot;,&quot;isDifferent&quot;:false,&quot;hasBaselineImage&quot;:false,&quot;hasCurrentImage&quot;:true,&quot;hasCheckpointImage&quot;:true,&quot;apiUrls&quot;:{&quot;currentImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392573538/steps/1/images/checkpoint&quot;,&quot;checkpointImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392573538/steps/1/images/checkpoint&quot;,&quot;checkpointImageThumbnail&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392573538/steps/1/images/checkpoint-thumbnail&quot;},&quot;appUrls&quot;:{&quot;step&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772/00000251774392573538/steps/1?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;stepEditor&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772/00000251774392573538/steps/1/edit?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;}}],&quot;startedAt&quot;:&quot;2021-08-02T22:43:46.1961724+10:00&quot;,&quot;duration&quot;:12,&quot;hostDisplaySize&quot;:{&quot;width&quot;:700,&quot;height&quot;:500},&quot;baselineId&quot;:&quot;k~!~!e44875d3-c449-431a-8c84-7bcd82cb0e9f~!bc9a041a-4378-46bc-b715-88923aaf4a6f~!Gk1VKd6I7amynOVguJaMv5lGZNJyHgT41Gx04iaGzCs_~!&quot;,&quot;defaultMatchSettings&quot;:{&quot;matchLevel&quot;:&quot;Strict&quot;,&quot;ignore&quot;:[],&quot;strict&quot;:[],&quot;content&quot;:[],&quot;layout&quot;:[],&quot;floating&quot;:[],&quot;accessibility&quot;:[],&quot;ignoreCaret&quot;:true,&quot;useDom&quot;:false,&quot;enablePatterns&quot;:false,&quot;ignoreDisplacements&quot;:false}}
+ browserInfo = DesktopBrowserInfo {ViewportSize={Width=700, Height=500}, BrowserType=FIREFOX}
+ exception = }
+		TestResultContainer {
+ testResults={&quot;secretToken&quot;:&quot;TSqTV5nNCebLc1104BVyEqSilKdR3Z110FZtGNbKxkrdqcs110&quot;,&quot;id&quot;:&quot;00000251774392573159&quot;,&quot;batchId&quot;:&quot;00000251774392573772&quot;,&quot;batchName&quot;:&quot;Ultrafast Batch&quot;,&quot;branchName&quot;:&quot;default&quot;,&quot;appName&quot;:&quot;Australian Unity&quot;,&quot;name&quot;:&quot;banking/home-loans&quot;,&quot;isDifferent&quot;:false,&quot;isAborted&quot;:false,&quot;url&quot;:&quot;https://eyes.applitools.com/app/batches/00000251774392573772/00000251774392573159?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;isNew&quot;:true,&quot;status&quot;:&quot;Passed&quot;,&quot;isPassed&quot;:true,&quot;steps&quot;:1,&quot;matches&quot;:0,&quot;mismatches&quot;:0,&quot;missing&quot;:0,&quot;exactMatches&quot;:0,&quot;strictMatches&quot;:0,&quot;contentMatches&quot;:0,&quot;layoutMatches&quot;:0,&quot;noneMatches&quot;:0,&quot;new&quot;:1,&quot;appUrls&quot;:{&quot;batch&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;session&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772/00000251774392573159?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;},&quot;apiUrls&quot;:{&quot;batch&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772&quot;,&quot;session&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392573159&quot;},&quot;hostApp&quot;:&quot;IE&quot;,&quot;hostOS&quot;:&quot;Windows 10.0&quot;,&quot;stepsInfo&quot;:[{&quot;name&quot;:&quot;banking/home-loans&quot;,&quot;isDifferent&quot;:false,&quot;hasBaselineImage&quot;:false,&quot;hasCurrentImage&quot;:true,&quot;hasCheckpointImage&quot;:true,&quot;apiUrls&quot;:{&quot;currentImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392573159/steps/1/images/checkpoint&quot;,&quot;checkpointImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392573159/steps/1/images/checkpoint&quot;,&quot;checkpointImageThumbnail&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392573159/steps/1/images/checkpoint-thumbnail&quot;},&quot;appUrls&quot;:{&quot;step&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772/00000251774392573159/steps/1?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;stepEditor&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772/00000251774392573159/steps/1/edit?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;}}],&quot;startedAt&quot;:&quot;2021-08-02T22:43:46.7624853+10:00&quot;,&quot;duration&quot;:16,&quot;hostDisplaySize&quot;:{&quot;width&quot;:1600,&quot;height&quot;:1200},&quot;baselineId&quot;:&quot;k~!~!e44875d3-c449-431a-8c84-7bcd82cb0e9f~!bc9a041a-4378-46bc-b715-88923aaf4a6f~!vTym9EnPsKAJo61arOzanTfVf9zTLXkQIPVXcAykUlo_~!&quot;,&quot;defaultMatchSettings&quot;:{&quot;matchLevel&quot;:&quot;Strict&quot;,&quot;ignore&quot;:[],&quot;strict&quot;:[],&quot;content&quot;:[],&quot;layout&quot;:[],&quot;floating&quot;:[],&quot;accessibility&quot;:[],&quot;ignoreCaret&quot;:true,&quot;useDom&quot;:false,&quot;enablePatterns&quot;:false,&quot;ignoreDisplacements&quot;:false}}
+ browserInfo = DesktopBrowserInfo {ViewportSize={Width=1600, Height=1200}, BrowserType=IE_11}
+ exception = }
+		TestResultContainer {
+ testResults={&quot;secretToken&quot;:&quot;pPuvFnUPNyHIvXMrW4AHOBPS2OD7A2979vvMryZoVW1Y110&quot;,&quot;id&quot;:&quot;00000251774392572207&quot;,&quot;batchId&quot;:&quot;00000251774392573772&quot;,&quot;batchName&quot;:&quot;Ultrafast Batch&quot;,&quot;branchName&quot;:&quot;default&quot;,&quot;appName&quot;:&quot;Australian Unity&quot;,&quot;name&quot;:&quot;banking/home-loans&quot;,&quot;isDifferent&quot;:false,&quot;isAborted&quot;:false,&quot;url&quot;:&quot;https://eyes.applitools.com/app/batches/00000251774392573772/00000251774392572207?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;isNew&quot;:true,&quot;status&quot;:&quot;Passed&quot;,&quot;isPassed&quot;:true,&quot;steps&quot;:1,&quot;matches&quot;:0,&quot;mismatches&quot;:0,&quot;missing&quot;:0,&quot;exactMatches&quot;:0,&quot;strictMatches&quot;:0,&quot;contentMatches&quot;:0,&quot;layoutMatches&quot;:0,&quot;noneMatches&quot;:0,&quot;new&quot;:1,&quot;appUrls&quot;:{&quot;batch&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;session&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772/00000251774392572207?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;},&quot;apiUrls&quot;:{&quot;batch&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772&quot;,&quot;session&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392572207&quot;},&quot;hostApp&quot;:&quot;Edge&quot;,&quot;hostOS&quot;:&quot;Windows 10.0&quot;,&quot;stepsInfo&quot;:[{&quot;name&quot;:&quot;banking/home-loans&quot;,&quot;isDifferent&quot;:false,&quot;hasBaselineImage&quot;:false,&quot;hasCurrentImage&quot;:true,&quot;hasCheckpointImage&quot;:true,&quot;apiUrls&quot;:{&quot;currentImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392572207/steps/1/images/checkpoint&quot;,&quot;checkpointImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392572207/steps/1/images/checkpoint&quot;,&quot;checkpointImageThumbnail&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392572207/steps/1/images/checkpoint-thumbnail&quot;},&quot;appUrls&quot;:{&quot;step&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772/00000251774392572207/steps/1?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;stepEditor&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772/00000251774392572207/steps/1/edit?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;}}],&quot;startedAt&quot;:&quot;2021-08-02T22:43:47.4170979+10:00&quot;,&quot;duration&quot;:13,&quot;hostDisplaySize&quot;:{&quot;width&quot;:1024,&quot;height&quot;:768},&quot;baselineId&quot;:&quot;k~!~!e44875d3-c449-431a-8c84-7bcd82cb0e9f~!bc9a041a-4378-46bc-b715-88923aaf4a6f~!nFIoJG9Z_G6b7GQWMEUI2mHhmONXtVtMO_BP8dbLYGQ_~!&quot;,&quot;defaultMatchSettings&quot;:{&quot;matchLevel&quot;:&quot;Strict&quot;,&quot;ignore&quot;:[],&quot;strict&quot;:[],&quot;content&quot;:[],&quot;layout&quot;:[],&quot;floating&quot;:[],&quot;accessibility&quot;:[],&quot;ignoreCaret&quot;:true,&quot;useDom&quot;:false,&quot;enablePatterns&quot;:false,&quot;ignoreDisplacements&quot;:false}}
+ browserInfo = DesktopBrowserInfo {ViewportSize={Width=1024, Height=768}, BrowserType=EDGE_CHROMIUM}
+ exception = }
+		TestResultContainer {
+ testResults={&quot;secretToken&quot;:&quot;8JCSI7yYo106U9FR111HPR5gDXkU509mSAJ6EhnEy104i6yVs110&quot;,&quot;id&quot;:&quot;00000251774392572674&quot;,&quot;batchId&quot;:&quot;00000251774392573772&quot;,&quot;batchName&quot;:&quot;Ultrafast Batch&quot;,&quot;branchName&quot;:&quot;default&quot;,&quot;appName&quot;:&quot;Australian Unity&quot;,&quot;name&quot;:&quot;banking/home-loans&quot;,&quot;isDifferent&quot;:false,&quot;isAborted&quot;:false,&quot;url&quot;:&quot;https://eyes.applitools.com/app/batches/00000251774392573772/00000251774392572674?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;isNew&quot;:true,&quot;status&quot;:&quot;Passed&quot;,&quot;isPassed&quot;:true,&quot;steps&quot;:1,&quot;matches&quot;:0,&quot;mismatches&quot;:0,&quot;missing&quot;:0,&quot;exactMatches&quot;:0,&quot;strictMatches&quot;:0,&quot;contentMatches&quot;:0,&quot;layoutMatches&quot;:0,&quot;noneMatches&quot;:0,&quot;new&quot;:1,&quot;appUrls&quot;:{&quot;batch&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;session&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772/00000251774392572674?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;},&quot;apiUrls&quot;:{&quot;batch&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772&quot;,&quot;session&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392572674&quot;},&quot;hostApp&quot;:&quot;Safari&quot;,&quot;hostOS&quot;:&quot;Mac OS X 11.0&quot;,&quot;stepsInfo&quot;:[{&quot;name&quot;:&quot;banking/home-loans&quot;,&quot;isDifferent&quot;:false,&quot;hasBaselineImage&quot;:false,&quot;hasCurrentImage&quot;:true,&quot;hasCheckpointImage&quot;:true,&quot;apiUrls&quot;:{&quot;currentImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392572674/steps/1/images/checkpoint&quot;,&quot;checkpointImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392572674/steps/1/images/checkpoint&quot;,&quot;checkpointImageThumbnail&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392572674/steps/1/images/checkpoint-thumbnail&quot;},&quot;appUrls&quot;:{&quot;step&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772/00000251774392572674/steps/1?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;stepEditor&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772/00000251774392572674/steps/1/edit?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;}}],&quot;startedAt&quot;:&quot;2021-08-02T22:43:47.2625254+10:00&quot;,&quot;duration&quot;:18,&quot;hostDisplaySize&quot;:{&quot;width&quot;:800,&quot;height&quot;:600},&quot;baselineId&quot;:&quot;k~!~!e44875d3-c449-431a-8c84-7bcd82cb0e9f~!bc9a041a-4378-46bc-b715-88923aaf4a6f~!1IzpK2_XPVESfWT_d3NQIe1eFFwXZXmtxTKyZkaLKIQ_~!&quot;,&quot;defaultMatchSettings&quot;:{&quot;matchLevel&quot;:&quot;Strict&quot;,&quot;ignore&quot;:[],&quot;strict&quot;:[],&quot;content&quot;:[],&quot;layout&quot;:[],&quot;floating&quot;:[],&quot;accessibility&quot;:[],&quot;ignoreCaret&quot;:true,&quot;useDom&quot;:false,&quot;enablePatterns&quot;:false,&quot;ignoreDisplacements&quot;:false}}
+ browserInfo = DesktopBrowserInfo {ViewportSize={Width=800, Height=600}, BrowserType=SAFARI}
+ exception = }
+		TestResultContainer {
+ testResults={&quot;secretToken&quot;:&quot;HjyLy597105BosJJ9EQQFhX103TN3XXj9IxxgdAEm2105t13g110&quot;,&quot;id&quot;:&quot;00000251774392572268&quot;,&quot;batchId&quot;:&quot;00000251774392573772&quot;,&quot;batchName&quot;:&quot;Ultrafast Batch&quot;,&quot;branchName&quot;:&quot;default&quot;,&quot;appName&quot;:&quot;Australian Unity&quot;,&quot;name&quot;:&quot;banking/home-loans&quot;,&quot;isDifferent&quot;:false,&quot;isAborted&quot;:false,&quot;url&quot;:&quot;https://eyes.applitools.com/app/batches/00000251774392573772/00000251774392572268?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;isNew&quot;:true,&quot;status&quot;:&quot;Passed&quot;,&quot;isPassed&quot;:true,&quot;steps&quot;:1,&quot;matches&quot;:0,&quot;mismatches&quot;:0,&quot;missing&quot;:0,&quot;exactMatches&quot;:0,&quot;strictMatches&quot;:0,&quot;contentMatches&quot;:0,&quot;layoutMatches&quot;:0,&quot;noneMatches&quot;:0,&quot;new&quot;:1,&quot;appUrls&quot;:{&quot;batch&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;session&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772/00000251774392572268?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;},&quot;apiUrls&quot;:{&quot;batch&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772&quot;,&quot;session&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392572268&quot;},&quot;hostApp&quot;:&quot;Chrome&quot;,&quot;hostOS&quot;:&quot;Linux&quot;,&quot;stepsInfo&quot;:[{&quot;name&quot;:&quot;banking/home-loans&quot;,&quot;isDifferent&quot;:false,&quot;hasBaselineImage&quot;:false,&quot;hasCurrentImage&quot;:true,&quot;hasCheckpointImage&quot;:true,&quot;apiUrls&quot;:{&quot;currentImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392572268/steps/1/images/checkpoint&quot;,&quot;checkpointImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392572268/steps/1/images/checkpoint&quot;,&quot;checkpointImageThumbnail&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392572268/steps/1/images/checkpoint-thumbnail&quot;},&quot;appUrls&quot;:{&quot;step&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772/00000251774392572268/steps/1?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;stepEditor&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772/00000251774392572268/steps/1/edit?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;}}],&quot;startedAt&quot;:&quot;2021-08-02T22:43:47.6688097+10:00&quot;,&quot;duration&quot;:13,&quot;hostDisplaySize&quot;:{&quot;width&quot;:375,&quot;height&quot;:812},&quot;baselineId&quot;:&quot;k~!~!e44875d3-c449-431a-8c84-7bcd82cb0e9f~!bc9a041a-4378-46bc-b715-88923aaf4a6f~!bxiGG5Ec2SPYFF5SVdcTSa859XsWC4PthtFRwvT8A8M_~!&quot;,&quot;defaultMatchSettings&quot;:{&quot;matchLevel&quot;:&quot;Strict&quot;,&quot;ignore&quot;:[],&quot;strict&quot;:[],&quot;content&quot;:[],&quot;layout&quot;:[],&quot;floating&quot;:[],&quot;accessibility&quot;:[],&quot;ignoreCaret&quot;:true,&quot;useDom&quot;:false,&quot;enablePatterns&quot;:false,&quot;ignoreDisplacements&quot;:false}}
+ browserInfo = iPhone_X (Portrait)
+ exception = }
+		TestResultContainer {
+ testResults={&quot;secretToken&quot;:&quot;HhD5JMaXWp107pU011197m8i1O103Q8UUsD9NE98SWktnt4NkpE110&quot;,&quot;id&quot;:&quot;00000251774392571724&quot;,&quot;batchId&quot;:&quot;00000251774392573772&quot;,&quot;batchName&quot;:&quot;Ultrafast Batch&quot;,&quot;branchName&quot;:&quot;default&quot;,&quot;appName&quot;:&quot;Australian Unity&quot;,&quot;name&quot;:&quot;banking/home-loans&quot;,&quot;isDifferent&quot;:false,&quot;isAborted&quot;:false,&quot;url&quot;:&quot;https://eyes.applitools.com/app/batches/00000251774392573772/00000251774392571724?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;isNew&quot;:true,&quot;status&quot;:&quot;Passed&quot;,&quot;isPassed&quot;:true,&quot;steps&quot;:1,&quot;matches&quot;:0,&quot;mismatches&quot;:0,&quot;missing&quot;:0,&quot;exactMatches&quot;:0,&quot;strictMatches&quot;:0,&quot;contentMatches&quot;:0,&quot;layoutMatches&quot;:0,&quot;noneMatches&quot;:0,&quot;new&quot;:1,&quot;appUrls&quot;:{&quot;batch&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;session&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772/00000251774392571724?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;},&quot;apiUrls&quot;:{&quot;batch&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772&quot;,&quot;session&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392571724&quot;},&quot;hostApp&quot;:&quot;Chrome&quot;,&quot;hostOS&quot;:&quot;Linux&quot;,&quot;stepsInfo&quot;:[{&quot;name&quot;:&quot;banking/home-loans&quot;,&quot;isDifferent&quot;:false,&quot;hasBaselineImage&quot;:false,&quot;hasCurrentImage&quot;:true,&quot;hasCheckpointImage&quot;:true,&quot;apiUrls&quot;:{&quot;currentImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392571724/steps/1/images/checkpoint&quot;,&quot;checkpointImage&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392571724/steps/1/images/checkpoint&quot;,&quot;checkpointImageThumbnail&quot;:&quot;https://eyesapi.applitools.com/api/sessions/batches/00000251774392573772/00000251774392571724/steps/1/images/checkpoint-thumbnail&quot;},&quot;appUrls&quot;:{&quot;step&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772/00000251774392571724/steps/1?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;,&quot;stepEditor&quot;:&quot;https://eyes.applitools.com/app/test-results/00000251774392573772/00000251774392571724/steps/1/edit?accountId=wr5oFz2IPkWnnE7rRBmkQg~~&quot;}}],&quot;startedAt&quot;:&quot;2021-08-02T22:43:47.9632915+10:00&quot;,&quot;duration&quot;:12,&quot;hostDisplaySize&quot;:{&quot;width&quot;:411,&quot;height&quot;:731},&quot;baselineId&quot;:&quot;k~!~!e44875d3-c449-431a-8c84-7bcd82cb0e9f~!bc9a041a-4378-46bc-b715-88923aaf4a6f~!t5_yHKajqyQpbI2KV_xCrLfj8THcro9e2FQ7s1e3u4E_~!&quot;,&quot;defaultMatchSettings&quot;:{&quot;matchLevel&quot;:&quot;Strict&quot;,&quot;ignore&quot;:[],&quot;strict&quot;:[],&quot;content&quot;:[],&quot;layout&quot;:[],&quot;floating&quot;:[],&quot;accessibility&quot;:[],&quot;ignoreCaret&quot;:true,&quot;useDom&quot;:false,&quot;enablePatterns&quot;:false,&quot;ignoreDisplacements&quot;:false}}
+ browserInfo = Pixel_2 (Portrait)
+ exception = }
+	passed=7
+	unresolved=0
+	failed=0
+	exceptions=0
+	mismatches=0
+	missing=0
+	matches=0
+}
+done: NavigateToSteps.ThenIValidateUIWithPreviousVersion(&quot;production&quot;, &quot;banking/home-loans&quot;) (28.5s)
+
+</pre>
+                                <br />
+                                <a href="./Screenshots\tmp18B4.png" target="_blank"><img src="./Screenshots\tmp18B4.png" width="150"></a>
+                        </td>
+                        <td>Succeeded in 29.235s</td>
+                    </tr>
+            </table>
+	</body>
+</html>

@@ -1,0 +1,502 @@
+﻿2021-08-02T22:30:21.7637565+10:00;VSTestExecutionThread;Info;SpecFlow+Runner execution started
+2021-08-02T22:30:21.7640494+10:00;VSTestExecutionThread;Info;SpecFlow+Runner 3.9.7 in Framework net50 in x64 mode execution started
+2021-08-02T22:30:21.7640543+10:00;VSTestExecutionThread;Info;TestAdapter Location: D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\TechTalk.SpecRun.VisualStudio.TestAdapter.dll
+2021-08-02T22:30:21.7659632+10:00;VSTestExecutionThread;Info;Current UserName: 'Satish', MachineName: 'DESKTOP-VOTDP1M'
+2021-08-02T22:30:21.9289867+10:00;VSTestExecutionThread;Info;SpecRun: running tests in D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\TQP.QA.Automation.UI.Test.dll
+2021-08-02T22:30:21.9292146+10:00;VSTestExecutionThread;Info;Output folder configured to "Results" in profile
+2021-08-02T22:30:21.9292863+10:00;VSTestExecutionThread;Info;Profile: TQP.QA.Automation.UI.Test
+2021-08-02T22:30:21.9780893+10:00;VSTestExecutionThread;Info;Log file path: D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\Results\TQP.QA.Automation.UI.Test_TQP.QA.Automation.UI.Test_2021-08-02T223021.log
+2021-08-02T22:30:21.9861115+10:00;Thread#12;Info;Checking activation
+2021-08-02T22:30:22.0788930+10:00;Thread#12;Info;Activated.
+2021-08-02T22:30:22.0792092+10:00;Thread#12;Info;Activation check completed
+2021-08-02T22:30:22.0793193+10:00;Thread#12;Info;Starting test run
+2021-08-02T22:30:22.1760332+10:00;Thread#12;Info;Discovering target: Default
+2021-08-02T22:30:22.1761819+10:00;Thread#12;Info;Discovering tests from assembly: D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\TQP.QA.Automation.UI.Test.dll
+2021-08-02T22:30:22.2662038+10:00;Thread#12;Info;Discovered tests from assembly: D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\TQP.QA.Automation.UI.Test.dll
+2021-08-02T22:30:22.2679685+10:00:Test Suite Dump
+2021-08-02T22:30:22.2698095+10:00:#0: TQP.QA.Automation.UI.Test/TQP.QA.Automation.UI.Test - 
+2021-08-02T22:30:22.2698636+10:00:#1: Default - 
+2021-08-02T22:30:22.2698737+10:00:#2: TQP.QA.Automation.UI.Test - 
+2021-08-02T22:30:22.2698799+10:00:#3: Australian Unity - 
+2021-08-02T22:30:22.2710789+10:00:#4: Navigate and Validate UI, Variant 0 - TestAssembly:TQP.QA.Automation.UI.Test/Feature:Australian+Unity/Scenario:Navigate+and+Validate+UI%2c+Variant+0
+2021-08-02T22:30:22.2711469+10:00:#5: Navigate and Validate UI, Variant 1 - TestAssembly:TQP.QA.Automation.UI.Test/Feature:Australian+Unity/Scenario:Navigate+and+Validate+UI%2c+Variant+1
+2021-08-02T22:30:22.2712088+10:00:End: Test Suite Dump
+2021-08-02T22:30:22.2882279+10:00:Thread#0:Scheduler: get next test for thread 0
+2021-08-02T22:30:22.2900562+10:00:Thread#:Scheduler: testitem #4 from normal test queue 
+2021-08-02T22:30:22.2901106+10:00:Thread#0:Scheduler: considering testitem #4 for thread 0
+2021-08-02T22:30:22.2936032+10:00:Thread#0:TestItem#4:testItemMatchesCurrentTestThread:UnSpecific
+2021-08-02T22:30:22.2936174+10:00:Thread#0:TestItem#4:runsOnOneOtherThreadSpecific:False
+2021-08-02T22:30:22.2936198+10:00:Thread#0:TestItem#4:runsOnOneOtherThreadUnspecific:False
+2021-08-02T22:30:22.2936223+10:00:Thread#0:Scheduler: using testitem #4 for thread 0
+2021-08-02T22:30:22.2944758+10:00:Thread#0:Scheduler: Test #4 is scheduled for thread
+2021-08-02T22:30:22.2958586+10:00:Thread#0:Scheduler: with testItemExecutionIndex 0
+2021-08-02T22:30:22.2988958+10:00:Thread #0: creating new test thread executor for TQP.QA.Automation.UI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null (target: Default)
+2021-08-02T22:30:22.3038889+10:00:Thread #0: Creating test assembly executor for execution model OutProc
+2021-08-02T22:30:22.3040773+10:00:Thread #0: Creating test assembly executor for execution model OutProc
+2021-08-02T22:30:22.3059633+10:00:Thread #0: using TechTalk.SpecRun.Framework.Execution.OutOfProc.StreamJsonRPC.OutOfProcessTestAssemblyExecutorHost to execute tests
+2021-08-02T22:30:22.3069147+10:00:starting Out Of Process Executor
+2021-08-02T22:30:22.3087081+10:00:Assembly resolving Microsoft.VisualStudio.Validation, Version=15.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+2021-08-02T22:30:22.3113754+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' from .deps.json file
+2021-08-02T22:30:22.3113897+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' from .deps.json
+2021-08-02T22:30:22.3128416+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0'
+2021-08-02T22:30:22.3132422+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\Microsoft.VisualStudio.Validation.dll'
+2021-08-02T22:30:22.3133435+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\Microsoft.VisualStudio.Validation.exe'
+2021-08-02T22:30:22.3133875+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0'
+2021-08-02T22:30:22.3136695+10:00:TargetFramework: .NETCoreApp,Version=v5.0
+2021-08-02T22:30:22.3139792+10:00:Tfm: netcoreapp5.0
+2021-08-02T22:30:22.3139915+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0'
+2021-08-02T22:30:22.3139934+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0\Microsoft.VisualStudio.Validation.dll'
+2021-08-02T22:30:22.3140663+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0\Microsoft.VisualStudio.Validation.exe'
+2021-08-02T22:30:22.3141019+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0'
+2021-08-02T22:30:22.3211270+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8'
+2021-08-02T22:30:22.3211412+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8\Microsoft.VisualStudio.Validation.dll'
+2021-08-02T22:30:22.3212805+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8\Microsoft.VisualStudio.Validation.exe'
+2021-08-02T22:30:22.3213497+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8'
+2021-08-02T22:30:22.3215062+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8'
+2021-08-02T22:30:22.3215144+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8\Microsoft.VisualStudio.Validation.dll'
+2021-08-02T22:30:22.3215685+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8\Microsoft.VisualStudio.Validation.exe'
+2021-08-02T22:30:22.3216147+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8'
+2021-08-02T22:30:22.3217551+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8'
+2021-08-02T22:30:22.3217691+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8\Microsoft.VisualStudio.Validation.dll'
+2021-08-02T22:30:22.3218543+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Validation' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8\Microsoft.VisualStudio.Validation.exe'
+2021-08-02T22:30:22.3219085+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Validation' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8'
+2021-08-02T22:30:22.3242766+10:00:Starting callback TCP Rpc server
+2021-08-02T22:30:22.3411231+10:00:Asynchronously starting background TCP Rpc Server on port 32768
+2021-08-02T22:30:22.3411600+10:00:Started callback TCP Rpc server on port 32768
+2021-08-02T22:30:22.3411626+10:00:Starting logger TCP Rpc server
+2021-08-02T22:30:22.3432469+10:00:Asynchronously starting background TCP Rpc Server on port 32769
+2021-08-02T22:30:22.3432686+10:00:Started logger TCP Rpc server on port 32769
+2021-08-02T22:30:22.4242934+10:00:Executing test executor at 'dotnet' 'exec "D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\net5.0\TechTalk.SpecRun.Framework.Executor.anycpu.net5_0.dll" --remoteRunnerPid 17808 --uniqueId "2021-08-02T223021" --outputFolder "D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\Results" --callbackPort 32768 --loggerPort 32769' in 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0'
+2021-08-02T22:30:22.4330618+10:00:Executor with PID 19004 has been started successfully.
+2021-08-02T22:30:22.4362671+10:00:Out of Process Executor 19004 started
+2021-08-02T22:30:22.4362930+10:00:Waiting for endpoint
+2021-08-02T22:30:22.8030461+10:00:Assembly resolving StreamJsonRpc.resources, Version=1.4.0.0, Culture=en-GB, PublicKeyToken=b03f5f7f11d50a3a
+2021-08-02T22:30:22.8030765+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' from .deps.json file
+2021-08-02T22:30:22.8030799+10:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' from .deps.json
+2021-08-02T22:30:22.8030845+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0'
+2021-08-02T22:30:22.8030863+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\StreamJsonRpc.resources.dll'
+2021-08-02T22:30:22.8031117+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\StreamJsonRpc.resources.exe'
+2021-08-02T22:30:22.8031431+10:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0'
+2021-08-02T22:30:22.8031466+10:00:TargetFramework: .NETCoreApp,Version=v5.0
+2021-08-02T22:30:22.8031600+10:00:Tfm: netcoreapp5.0
+2021-08-02T22:30:22.8031627+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0'
+2021-08-02T22:30:22.8031642+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0\StreamJsonRpc.resources.dll'
+2021-08-02T22:30:22.8031931+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0\StreamJsonRpc.resources.exe'
+2021-08-02T22:30:22.8032165+10:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0'
+2021-08-02T22:30:22.8038646+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8'
+2021-08-02T22:30:22.8038788+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8\StreamJsonRpc.resources.dll'
+2021-08-02T22:30:22.8039512+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8\StreamJsonRpc.resources.exe'
+2021-08-02T22:30:22.8040230+10:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8'
+2021-08-02T22:30:22.8041661+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8'
+2021-08-02T22:30:22.8041744+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8\StreamJsonRpc.resources.dll'
+2021-08-02T22:30:22.8042232+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8\StreamJsonRpc.resources.exe'
+2021-08-02T22:30:22.8042642+10:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8'
+2021-08-02T22:30:22.8044132+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8'
+2021-08-02T22:30:22.8044209+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8\StreamJsonRpc.resources.dll'
+2021-08-02T22:30:22.8044739+10:00:[AssemblyCache] Trying to resolve 'StreamJsonRpc.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8\StreamJsonRpc.resources.exe'
+2021-08-02T22:30:22.8045146+10:00:[AssemblyCache] Could not resolve 'StreamJsonRpc.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8'
+2021-08-02T22:30:22.8052005+10:00:Assembly resolving StreamJsonRpc.resources, Version=1.4.0.0, Culture=en, PublicKeyToken=b03f5f7f11d50a3a
+2021-08-02T22:30:22.8057649+10:00:Assembly resolving Microsoft.VisualStudio.Threading, Version=15.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+2021-08-02T22:30:22.8057753+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' from .deps.json file
+2021-08-02T22:30:22.8057777+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' from .deps.json
+2021-08-02T22:30:22.8057817+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0'
+2021-08-02T22:30:22.8057834+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\Microsoft.VisualStudio.Threading.dll'
+2021-08-02T22:30:22.8058074+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\Microsoft.VisualStudio.Threading.exe'
+2021-08-02T22:30:22.8058287+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0'
+2021-08-02T22:30:22.8058313+10:00:TargetFramework: .NETCoreApp,Version=v5.0
+2021-08-02T22:30:22.8058504+10:00:Tfm: netcoreapp5.0
+2021-08-02T22:30:22.8058534+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0'
+2021-08-02T22:30:22.8058549+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0\Microsoft.VisualStudio.Threading.dll'
+2021-08-02T22:30:22.8058929+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0\Microsoft.VisualStudio.Threading.exe'
+2021-08-02T22:30:22.8059174+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0'
+2021-08-02T22:30:22.8063988+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8'
+2021-08-02T22:30:22.8064086+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8\Microsoft.VisualStudio.Threading.dll'
+2021-08-02T22:30:22.8064654+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8\Microsoft.VisualStudio.Threading.exe'
+2021-08-02T22:30:22.8065074+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8'
+2021-08-02T22:30:22.8066449+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8'
+2021-08-02T22:30:22.8066526+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8\Microsoft.VisualStudio.Threading.dll'
+2021-08-02T22:30:22.8067002+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8\Microsoft.VisualStudio.Threading.exe'
+2021-08-02T22:30:22.8067418+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8'
+2021-08-02T22:30:22.8068962+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8'
+2021-08-02T22:30:22.8069050+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8\Microsoft.VisualStudio.Threading.dll'
+2021-08-02T22:30:22.8070044+10:00:[AssemblyCache] Trying to resolve 'Microsoft.VisualStudio.Threading' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8\Microsoft.VisualStudio.Threading.exe'
+2021-08-02T22:30:22.8070902+10:00:[AssemblyCache] Could not resolve 'Microsoft.VisualStudio.Threading' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8'
+2021-08-02T22:30:23.0428393+10:00:Remote executor port received: 32770
+2021-08-02T22:30:23.0431863+10:00:Creating executor TCP client on port 32770
+2021-08-02T22:30:23.0436004+10:00:Created executor TCP client on port 32770
+2021-08-02T22:30:23.0436098+10:00:Connecting to remote executor TCP server
+2021-08-02T22:30:23.0446712+10:00:Connected remote executor TCP server
+2021-08-02T22:30:23.0448291+10:00:trying to connect to Out of Process Executor the 1 attempt
+2021-08-02T22:30:23.0448373+10:00:Connection to Out of Process Executor established in the 1 attempt
+2021-08-02T22:30:23.2001162+10:00:2021-08-02T22:30:23.1990728+10:00:OutOfProcessTestAssemblyExecutor: initialized for D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\TQP.QA.Automation.UI.Test.dll on test thread #0
+2021-08-02T22:30:23.2041899+10:00:Endpoint 19004 started
+2021-08-02T22:30:23.2233247+10:00:2021-08-02T22:30:23.2229651+10:00:OutOfProcessTestAssemblyExecutor: running tests...
+2021-08-02T22:30:23.3324051+10:00:2021-08-02T22:30:23.3319903+10:00:Assembly resolving TechTalk.SpecFlow, Version=3.9.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41
+2021-08-02T22:30:23.3355571+10:00:2021-08-02T22:30:23.3353048+10:00:[AssemblyCache] Trying to resolve 'TechTalk.SpecFlow' from .deps.json file
+2021-08-02T22:30:23.3381804+10:00:2021-08-02T22:30:23.3379338+10:00:[AssemblyCache] Resolved 'TechTalk.SpecFlow' to 'C:\Users\Satish\.nuget\packages\specflow\3.9.22\lib\netstandard2.0\TechTalk.SpecFlow.dll'
+2021-08-02T22:30:23.4608742+10:00:2021-08-02T22:30:23.4600298+10:00:Thread#0:T:-> Loading plugin D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\TQP.QA.Automation.UI.Test.dll
+2021-08-02T22:30:23.4641408+10:00:2021-08-02T22:30:23.4620508+10:00:Assembly resolving Microsoft.Extensions.DependencyModel, Version=1.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2021-08-02T22:30:23.4691487+10:00:2021-08-02T22:30:23.4645533+10:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.DependencyModel' from .deps.json file
+2021-08-02T22:30:23.4704956+10:00:2021-08-02T22:30:23.4698881+10:00:[AssemblyCache] Resolved 'Microsoft.Extensions.DependencyModel' to 'C:\Users\Satish\.nuget\packages\microsoft.extensions.dependencymodel\1.0.3\lib\netstandard1.6\Microsoft.Extensions.DependencyModel.dll'
+2021-08-02T22:30:23.5139504+10:00:2021-08-02T22:30:23.5134059+10:00:Assembly resolving Microsoft.DotNet.PlatformAbstractions, Version=1.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2021-08-02T22:30:23.5148381+10:00:2021-08-02T22:30:23.5144480+10:00:[AssemblyCache] Trying to resolve 'Microsoft.DotNet.PlatformAbstractions' from .deps.json file
+2021-08-02T22:30:23.5157284+10:00:2021-08-02T22:30:23.5153588+10:00:[AssemblyCache] Resolved 'Microsoft.DotNet.PlatformAbstractions' to 'C:\Users\Satish\.nuget\packages\microsoft.dotnet.platformabstractions\1.0.3\lib\netstandard1.3\Microsoft.DotNet.PlatformAbstractions.dll'
+2021-08-02T22:30:23.5248650+10:00:2021-08-02T22:30:23.5244311+10:00:Thread#0:T:-> Loading plugin D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SolidToken.SpecFlow.DependencyInjection.SpecFlowPlugin.dll
+2021-08-02T22:30:23.5285381+10:00:2021-08-02T22:30:23.5281241+10:00:Thread#0:T:-> Loading plugin D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecRun.Runtime.SpecFlowPlugin.dll
+2021-08-02T22:30:23.5399595+10:00:2021-08-02T22:30:23.5394717+10:00:Assembly resolving Microsoft.Extensions.DependencyInjection.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2021-08-02T22:30:23.5406280+10:00:2021-08-02T22:30:23.5402980+10:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.DependencyInjection.Abstractions' from .deps.json file
+2021-08-02T22:30:23.5414036+10:00:2021-08-02T22:30:23.5410932+10:00:[AssemblyCache] Resolved 'Microsoft.Extensions.DependencyInjection.Abstractions' to 'C:\Users\Satish\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\5.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll'
+2021-08-02T22:30:23.5436076+10:00:2021-08-02T22:30:23.5432698+10:00:Thread#0:T:-> Using default config
+2021-08-02T22:30:23.5544381+10:00:2021-08-02T22:30:23.5539285+10:00:Assembly resolving Cucumber.Messages, Version=6.0.1.0, Culture=neutral, PublicKeyToken=b10c5988214f940c
+2021-08-02T22:30:23.5551163+10:00:2021-08-02T22:30:23.5547727+10:00:[AssemblyCache] Trying to resolve 'Cucumber.Messages' from .deps.json file
+2021-08-02T22:30:23.5559325+10:00:2021-08-02T22:30:23.5556458+10:00:[AssemblyCache] Resolved 'Cucumber.Messages' to 'C:\Users\Satish\.nuget\packages\cucumber.messages\6.0.1\lib\netstandard2.0\Cucumber.Messages.dll'
+2021-08-02T22:30:23.5575575+10:00:2021-08-02T22:30:23.5572519+10:00:Assembly resolving Google.Protobuf, Version=3.7.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604
+2021-08-02T22:30:23.5581464+10:00:2021-08-02T22:30:23.5578490+10:00:[AssemblyCache] Trying to resolve 'Google.Protobuf' from .deps.json file
+2021-08-02T22:30:23.5588643+10:00:2021-08-02T22:30:23.5585673+10:00:[AssemblyCache] Resolved 'Google.Protobuf' to 'C:\Users\Satish\.nuget\packages\google.protobuf\3.7.0\lib\netstandard1.0\Google.Protobuf.dll'
+2021-08-02T22:30:23.5642524+10:00:2021-08-02T22:30:23.5637732+10:00:Assembly resolving TQP.QA.Automation.UI.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+2021-08-02T22:30:23.5649065+10:00:2021-08-02T22:30:23.5645864+10:00:[AssemblyCache] Trying to resolve 'TQP.QA.Automation.UI.Core' from .deps.json file
+2021-08-02T22:30:23.5660837+10:00:2021-08-02T22:30:23.5657862+10:00:[DependencyContextAssemblyCache.ResolveManagedAssembly] Resolving 'TQP.QA.Automation.UI.Core', found in dependency map, but unable to resolve a path in ['TQP.QA.Automation.UI.Core.dll']
+2021-08-02T22:30:23.5666784+10:00:2021-08-02T22:30:23.5663610+10:00:[AssemblyCache] Could not resolve 'TQP.QA.Automation.UI.Core' from .deps.json
+2021-08-02T22:30:23.5686943+10:00:2021-08-02T22:30:23.5683665+10:00:[AssemblyCache] Trying to resolve 'TQP.QA.Automation.UI.Core' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0'
+2021-08-02T22:30:23.5744563+10:00:2021-08-02T22:30:23.5741310+10:00:[AssemblyCache] Trying to resolve 'TQP.QA.Automation.UI.Core' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\TQP.QA.Automation.UI.Core.dll'
+2021-08-02T22:30:23.5750864+10:00:2021-08-02T22:30:23.5748095+10:00:[AssemblyCache] Found file 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\TQP.QA.Automation.UI.Core.dll' for assembly 'TQP.QA.Automation.UI.Core'
+2021-08-02T22:30:23.5760229+10:00:2021-08-02T22:30:23.5757297+10:00:[AssemblyCache] Resolved 'TQP.QA.Automation.UI.Core' to D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\TQP.QA.Automation.UI.Core.dll
+2021-08-02T22:30:23.5968150+10:00:2021-08-02T22:30:23.5962102+10:00:Assembly resolving SolidToken.SpecFlow.DependencyInjection.SpecFlowPlugin, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+2021-08-02T22:30:23.5974631+10:00:2021-08-02T22:30:23.5972036+10:00:[AssemblyCache] Trying to resolve 'SolidToken.SpecFlow.DependencyInjection.SpecFlowPlugin' from .deps.json file
+2021-08-02T22:30:23.5983136+10:00:2021-08-02T22:30:23.5979177+10:00:[AssemblyCache] Resolved 'SolidToken.SpecFlow.DependencyInjection.SpecFlowPlugin' to 'C:\Users\Satish\.nuget\packages\solidtoken.specflow.dependencyinjection\3.9.0\lib\netstandard2.0\SolidToken.SpecFlow.DependencyInjection.SpecFlowPlugin.dll'
+2021-08-02T22:30:23.6169831+10:00:2021-08-02T22:30:23.6165529+10:00:Assembly resolving SpecFlow.Internal.Json, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41
+2021-08-02T22:30:23.6175207+10:00:2021-08-02T22:30:23.6172674+10:00:[AssemblyCache] Trying to resolve 'SpecFlow.Internal.Json' from .deps.json file
+2021-08-02T22:30:23.6182295+10:00:2021-08-02T22:30:23.6179514+10:00:[AssemblyCache] Resolved 'SpecFlow.Internal.Json' to 'C:\Users\Satish\.nuget\packages\specflow.internal.json\1.0.8\lib\netstandard2.0\SpecFlow.Internal.Json.dll'
+2021-08-02T22:30:23.7169899+10:00:2021-08-02T22:30:23.7165384+10:00:Assembly resolving Microsoft.Extensions.DependencyInjection, Version=5.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2021-08-02T22:30:23.7174950+10:00:2021-08-02T22:30:23.7172920+10:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.DependencyInjection' from .deps.json file
+2021-08-02T22:30:23.7182165+10:00:2021-08-02T22:30:23.7179945+10:00:[AssemblyCache] Resolved 'Microsoft.Extensions.DependencyInjection' to 'C:\Users\Satish\.nuget\packages\microsoft.extensions.dependencyinjection\5.0.1\lib\net5.0\Microsoft.Extensions.DependencyInjection.dll'
+2021-08-02T22:30:23.7245893+10:00:2021-08-02T22:30:23.7242190+10:00:Assembly resolving Microsoft.Extensions.DependencyInjection.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2021-08-02T22:30:23.7252025+10:00:2021-08-02T22:30:23.7249903+10:00:Assembly resolving Microsoft.Extensions.DependencyInjection, Version=5.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2021-08-02T22:30:23.7259023+10:00:2021-08-02T22:30:23.7256962+10:00:Assembly resolving Microsoft.Extensions.Options, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2021-08-02T22:30:23.7262099+10:00:2021-08-02T22:30:23.7260658+10:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.Options' from .deps.json file
+2021-08-02T22:30:23.7268200+10:00:2021-08-02T22:30:23.7266059+10:00:[AssemblyCache] Resolved 'Microsoft.Extensions.Options' to 'C:\Users\Satish\.nuget\packages\microsoft.extensions.options\5.0.0\lib\net5.0\Microsoft.Extensions.Options.dll'
+2021-08-02T22:30:23.7282547+10:00:2021-08-02T22:30:23.7280058+10:00:Assembly resolving TQP.QA.Automation.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+2021-08-02T22:30:23.7287585+10:00:2021-08-02T22:30:23.7285102+10:00:[AssemblyCache] Trying to resolve 'TQP.QA.Automation.Shared' from .deps.json file
+2021-08-02T22:30:23.7293866+10:00:2021-08-02T22:30:23.7290852+10:00:[DependencyContextAssemblyCache.ResolveManagedAssembly] Resolving 'TQP.QA.Automation.Shared', found in dependency map, but unable to resolve a path in ['TQP.QA.Automation.Shared.dll']
+2021-08-02T22:30:23.7304006+10:00:2021-08-02T22:30:23.7301077+10:00:[AssemblyCache] Could not resolve 'TQP.QA.Automation.Shared' from .deps.json
+2021-08-02T22:30:23.7310520+10:00:2021-08-02T22:30:23.7307689+10:00:[AssemblyCache] Trying to resolve 'TQP.QA.Automation.Shared' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0'
+2021-08-02T22:30:23.7315142+10:00:2021-08-02T22:30:23.7312872+10:00:[AssemblyCache] Trying to resolve 'TQP.QA.Automation.Shared' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\TQP.QA.Automation.Shared.dll'
+2021-08-02T22:30:23.7320503+10:00:2021-08-02T22:30:23.7318244+10:00:[AssemblyCache] Found file 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\TQP.QA.Automation.Shared.dll' for assembly 'TQP.QA.Automation.Shared'
+2021-08-02T22:30:23.7332105+10:00:2021-08-02T22:30:23.7326325+10:00:[AssemblyCache] Resolved 'TQP.QA.Automation.Shared' to D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\TQP.QA.Automation.Shared.dll
+2021-08-02T22:30:23.7340456+10:00:2021-08-02T22:30:23.7337271+10:00:Assembly resolving Microsoft.Extensions.Configuration.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2021-08-02T22:30:23.7344951+10:00:2021-08-02T22:30:23.7342593+10:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.Configuration.Abstractions' from .deps.json file
+2021-08-02T22:30:23.7351006+10:00:2021-08-02T22:30:23.7348646+10:00:[AssemblyCache] Resolved 'Microsoft.Extensions.Configuration.Abstractions' to 'C:\Users\Satish\.nuget\packages\microsoft.extensions.configuration.abstractions\5.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll'
+2021-08-02T22:30:23.7365095+10:00:2021-08-02T22:30:23.7362553+10:00:Assembly resolving TQP.QA.Automation.UI.BrowserDrivers.Chrome, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+2021-08-02T22:30:23.7370551+10:00:2021-08-02T22:30:23.7367415+10:00:[AssemblyCache] Trying to resolve 'TQP.QA.Automation.UI.BrowserDrivers.Chrome' from .deps.json file
+2021-08-02T22:30:23.7375187+10:00:2021-08-02T22:30:23.7372591+10:00:[DependencyContextAssemblyCache.ResolveManagedAssembly] Resolving 'TQP.QA.Automation.UI.BrowserDrivers.Chrome', found in dependency map, but unable to resolve a path in ['TQP.QA.Automation.UI.BrowserDrivers.Chrome.dll']
+2021-08-02T22:30:23.7379585+10:00:2021-08-02T22:30:23.7377457+10:00:[AssemblyCache] Could not resolve 'TQP.QA.Automation.UI.BrowserDrivers.Chrome' from .deps.json
+2021-08-02T22:30:23.7383164+10:00:2021-08-02T22:30:23.7381385+10:00:[AssemblyCache] Trying to resolve 'TQP.QA.Automation.UI.BrowserDrivers.Chrome' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0'
+2021-08-02T22:30:23.7387120+10:00:2021-08-02T22:30:23.7385505+10:00:[AssemblyCache] Trying to resolve 'TQP.QA.Automation.UI.BrowserDrivers.Chrome' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\TQP.QA.Automation.UI.BrowserDrivers.Chrome.dll'
+2021-08-02T22:30:23.7391347+10:00:2021-08-02T22:30:23.7389309+10:00:[AssemblyCache] Found file 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\TQP.QA.Automation.UI.BrowserDrivers.Chrome.dll' for assembly 'TQP.QA.Automation.UI.BrowserDrivers.Chrome'
+2021-08-02T22:30:23.7399563+10:00:2021-08-02T22:30:23.7397583+10:00:[AssemblyCache] Resolved 'TQP.QA.Automation.UI.BrowserDrivers.Chrome' to D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\TQP.QA.Automation.UI.BrowserDrivers.Chrome.dll
+2021-08-02T22:30:23.7705486+10:00:2021-08-02T22:30:23.7701968+10:00:Assembly resolving Microsoft.Extensions.Configuration, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2021-08-02T22:30:23.7709393+10:00:2021-08-02T22:30:23.7707524+10:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.Configuration' from .deps.json file
+2021-08-02T22:30:23.7715661+10:00:2021-08-02T22:30:23.7713455+10:00:[AssemblyCache] Resolved 'Microsoft.Extensions.Configuration' to 'C:\Users\Satish\.nuget\packages\microsoft.extensions.configuration\5.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll'
+2021-08-02T22:30:23.7731817+10:00:2021-08-02T22:30:23.7729379+10:00:Assembly resolving Microsoft.Extensions.Configuration.Json, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2021-08-02T22:30:23.7735695+10:00:2021-08-02T22:30:23.7734199+10:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.Configuration.Json' from .deps.json file
+2021-08-02T22:30:23.7741107+10:00:2021-08-02T22:30:23.7738742+10:00:[AssemblyCache] Resolved 'Microsoft.Extensions.Configuration.Json' to 'C:\Users\Satish\.nuget\packages\microsoft.extensions.configuration.json\5.0.0\lib\netstandard2.1\Microsoft.Extensions.Configuration.Json.dll'
+2021-08-02T22:30:23.7755237+10:00:2021-08-02T22:30:23.7752407+10:00:Assembly resolving Microsoft.Extensions.Configuration.EnvironmentVariables, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2021-08-02T22:30:23.7759206+10:00:2021-08-02T22:30:23.7757104+10:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.Configuration.EnvironmentVariables' from .deps.json file
+2021-08-02T22:30:23.7765602+10:00:2021-08-02T22:30:23.7762959+10:00:[AssemblyCache] Resolved 'Microsoft.Extensions.Configuration.EnvironmentVariables' to 'C:\Users\Satish\.nuget\packages\microsoft.extensions.configuration.environmentvariables\5.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.EnvironmentVariables.dll'
+2021-08-02T22:30:23.7789937+10:00:2021-08-02T22:30:23.7786192+10:00:Thread#0:T:Using settings from D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\appsettings.json
+2021-08-02T22:30:23.7796873+10:00:2021-08-02T22:30:23.7794553+10:00:Assembly resolving Microsoft.Extensions.FileProviders.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2021-08-02T22:30:23.7801568+10:00:2021-08-02T22:30:23.7799115+10:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.FileProviders.Abstractions' from .deps.json file
+2021-08-02T22:30:23.7809129+10:00:2021-08-02T22:30:23.7806434+10:00:[AssemblyCache] Resolved 'Microsoft.Extensions.FileProviders.Abstractions' to 'C:\Users\Satish\.nuget\packages\microsoft.extensions.fileproviders.abstractions\5.0.0\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Abstractions.dll'
+2021-08-02T22:30:23.7823151+10:00:2021-08-02T22:30:23.7820971+10:00:Assembly resolving Microsoft.Extensions.Configuration.FileExtensions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2021-08-02T22:30:23.7827922+10:00:2021-08-02T22:30:23.7825118+10:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.Configuration.FileExtensions' from .deps.json file
+2021-08-02T22:30:23.7833573+10:00:2021-08-02T22:30:23.7831448+10:00:[AssemblyCache] Resolved 'Microsoft.Extensions.Configuration.FileExtensions' to 'C:\Users\Satish\.nuget\packages\microsoft.extensions.configuration.fileextensions\5.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.FileExtensions.dll'
+2021-08-02T22:30:23.7857126+10:00:2021-08-02T22:30:23.7854141+10:00:Assembly resolving Microsoft.Extensions.FileProviders.Physical, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2021-08-02T22:30:23.7861461+10:00:2021-08-02T22:30:23.7859700+10:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.FileProviders.Physical' from .deps.json file
+2021-08-02T22:30:23.7867752+10:00:2021-08-02T22:30:23.7865434+10:00:[AssemblyCache] Resolved 'Microsoft.Extensions.FileProviders.Physical' to 'C:\Users\Satish\.nuget\packages\microsoft.extensions.fileproviders.physical\5.0.0\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Physical.dll'
+2021-08-02T22:30:23.7881416+10:00:2021-08-02T22:30:23.7879025+10:00:Assembly resolving Microsoft.Extensions.Primitives, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2021-08-02T22:30:23.7885076+10:00:2021-08-02T22:30:23.7883394+10:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.Primitives' from .deps.json file
+2021-08-02T22:30:23.7890913+10:00:2021-08-02T22:30:23.7888662+10:00:[AssemblyCache] Resolved 'Microsoft.Extensions.Primitives' to 'C:\Users\Satish\.nuget\packages\microsoft.extensions.primitives\5.0.0\lib\netcoreapp3.0\Microsoft.Extensions.Primitives.dll'
+2021-08-02T22:30:23.7919380+10:00:2021-08-02T22:30:23.7916040+10:00:Thread#0:T:Expected Settings file not found, skipping. File path: D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\appsettings.Local.json
+2021-08-02T22:30:23.7924718+10:00:2021-08-02T22:30:23.7922147+10:00:Thread#0:T:Using settings from Environment Variables
+2021-08-02T22:30:23.8270068+10:00:2021-08-02T22:30:23.8265576+10:00:Assembly resolving Microsoft.Extensions.Configuration.Binder, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2021-08-02T22:30:23.8276243+10:00:2021-08-02T22:30:23.8273124+10:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.Configuration.Binder' from .deps.json file
+2021-08-02T22:30:23.8283539+10:00:2021-08-02T22:30:23.8280575+10:00:[AssemblyCache] Resolved 'Microsoft.Extensions.Configuration.Binder' to 'C:\Users\Satish\.nuget\packages\microsoft.extensions.configuration.binder\5.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll'
+2021-08-02T22:30:23.8493175+10:00:Thread#0: Test #4/0 is started on thread #0
+2021-08-02T22:30:23.8642747+10:00:2021-08-02T22:30:23.8639103+10:00:Assembly resolving Microsoft.Extensions.Http, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2021-08-02T22:30:23.8647248+10:00:2021-08-02T22:30:23.8645187+10:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.Http' from .deps.json file
+2021-08-02T22:30:23.8653580+10:00:2021-08-02T22:30:23.8651381+10:00:[AssemblyCache] Resolved 'Microsoft.Extensions.Http' to 'C:\Users\Satish\.nuget\packages\microsoft.extensions.http\5.0.0\lib\netstandard2.0\Microsoft.Extensions.Http.dll'
+2021-08-02T22:30:23.8675336+10:00:2021-08-02T22:30:23.8672484+10:00:Assembly resolving Microsoft.Extensions.Logging, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2021-08-02T22:30:23.8679683+10:00:2021-08-02T22:30:23.8677744+10:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.Logging' from .deps.json file
+2021-08-02T22:30:23.8685722+10:00:2021-08-02T22:30:23.8683266+10:00:[AssemblyCache] Resolved 'Microsoft.Extensions.Logging' to 'C:\Users\Satish\.nuget\packages\microsoft.extensions.logging\5.0.0\lib\netstandard2.1\Microsoft.Extensions.Logging.dll'
+2021-08-02T22:30:23.8707799+10:00:2021-08-02T22:30:23.8705078+10:00:Assembly resolving Microsoft.Extensions.Logging.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2021-08-02T22:30:23.8712822+10:00:2021-08-02T22:30:23.8710441+10:00:[AssemblyCache] Trying to resolve 'Microsoft.Extensions.Logging.Abstractions' from .deps.json file
+2021-08-02T22:30:23.8719133+10:00:2021-08-02T22:30:23.8716840+10:00:[AssemblyCache] Resolved 'Microsoft.Extensions.Logging.Abstractions' to 'C:\Users\Satish\.nuget\packages\microsoft.extensions.logging.abstractions\5.0.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll'
+2021-08-02T22:30:23.9297587+10:00:2021-08-02T22:30:23.9292326+10:00:Assembly resolving System.Configuration.ConfigurationManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51
+2021-08-02T22:30:23.9303589+10:00:2021-08-02T22:30:23.9301187+10:00:[AssemblyCache] Trying to resolve 'System.Configuration.ConfigurationManager' from .deps.json file
+2021-08-02T22:30:23.9309819+10:00:2021-08-02T22:30:23.9307613+10:00:[AssemblyCache] Resolved 'System.Configuration.ConfigurationManager' to 'C:\Users\Satish\.nuget\packages\system.configuration.configurationmanager\5.0.0\lib\netstandard2.0\System.Configuration.ConfigurationManager.dll'
+2021-08-02T22:30:23.9346674+10:00:2021-08-02T22:30:23.9343133+10:00:Assembly resolving CliWrap, Version=3.3.2.0, Culture=neutral, PublicKeyToken=1c4a4fc2d6886e5a
+2021-08-02T22:30:23.9351760+10:00:2021-08-02T22:30:23.9348957+10:00:[AssemblyCache] Trying to resolve 'CliWrap' from .deps.json file
+2021-08-02T22:30:23.9358217+10:00:2021-08-02T22:30:23.9355729+10:00:[AssemblyCache] Resolved 'CliWrap' to 'C:\Users\Satish\.nuget\packages\cliwrap\3.3.2\lib\netcoreapp3.0\CliWrap.dll'
+2021-08-02T22:30:24.1420726+10:00:2021-08-02T22:30:24.1417130+10:00:Thread#0:B:Given I am on the home page for production
+2021-08-02T22:30:24.1520926+10:00:2021-08-02T22:30:24.1517142+10:00:Assembly resolving WebDriver, Version=3.141.0.0, Culture=neutral, PublicKeyToken=null
+2021-08-02T22:30:24.1526065+10:00:2021-08-02T22:30:24.1523853+10:00:[AssemblyCache] Trying to resolve 'WebDriver' from .deps.json file
+2021-08-02T22:30:24.1533478+10:00:2021-08-02T22:30:24.1531082+10:00:[AssemblyCache] Resolved 'WebDriver' to 'C:\Users\Satish\.nuget\packages\selenium.webdriver\3.141.0\lib\netstandard2.0\WebDriver.dll'
+2021-08-02T22:30:31.8540893+10:00:2021-08-02T22:30:31.8535511+10:00:Thread#0:T:done: NavigateToSteps.GivenIAmOnTheHomePageFor("production") (7.7s)
+2021-08-02T22:30:32.9587974+10:00:2021-08-02T22:30:32.9583186+10:00:Thread#0:T:SCREENSHOT[ ./Screenshots\tmpA7DC.png ]SCREENSHOT
+2021-08-02T22:30:32.9603280+10:00:2021-08-02T22:30:32.9600435+10:00:Thread#0:B:When I navigate to banking/bankaccounts
+2021-08-02T22:30:32.9621804+10:00:2021-08-02T22:30:32.9618157+10:00:Assembly resolving WebDriver, Version=3.141.0.0, Culture=neutral, PublicKeyToken=null
+2021-08-02T22:30:32.9693945+10:00:2021-08-02T22:30:32.9690113+10:00:Thread#0:T:currentURLhttps://www.australianunity.com.au/
+2021-08-02T22:30:34.3970792+10:00:2021-08-02T22:30:34.3955902+10:00:Thread#0:T:done: NavigateToSteps.WhenINavigateTo("banking/bankaccounts") (1.4s)
+2021-08-02T22:30:34.8003768+10:00:2021-08-02T22:30:34.7999327+10:00:Thread#0:T:SCREENSHOT[ ./Screenshots\tmpAF11.png ]SCREENSHOT
+2021-08-02T22:30:34.8013070+10:00:2021-08-02T22:30:34.8010275+10:00:Thread#0:B:Then I should see title Bank Accounts
+2021-08-02T22:30:34.8088520+10:00:2021-08-02T22:30:34.8085105+10:00:Thread#0:T:Current TitleAustralian Unity | Page not found
+2021-08-02T22:30:34.8094911+10:00:2021-08-02T22:30:34.8092365+10:00:Thread#0:T:done: NavigateToSteps.ThenIShouldSeeTitle("Bank Accounts") (0.0s)
+2021-08-02T22:30:35.1190551+10:00:2021-08-02T22:30:35.1186617+10:00:Thread#0:T:SCREENSHOT[ ./Screenshots\tmpB04A.png ]SCREENSHOT
+2021-08-02T22:30:35.1203622+10:00:2021-08-02T22:30:35.1200885+10:00:Thread#0:B:And I validate UI with previous version
+2021-08-02T22:30:35.1218436+10:00:2021-08-02T22:30:35.1215330+10:00:Assembly resolving Eyes.Selenium.DotNet, Version=2.54.0.0, Culture=neutral, PublicKeyToken=null
+2021-08-02T22:30:35.1223855+10:00:2021-08-02T22:30:35.1221280+10:00:[AssemblyCache] Trying to resolve 'Eyes.Selenium.DotNet' from .deps.json file
+2021-08-02T22:30:35.1232425+10:00:2021-08-02T22:30:35.1229719+10:00:[AssemblyCache] Resolved 'Eyes.Selenium.DotNet' to 'C:\Users\Satish\.nuget\packages\eyes.selenium\2.54.0\lib\netstandard2.0\Eyes.Selenium.DotNet.dll'
+2021-08-02T22:30:35.1246783+10:00:2021-08-02T22:30:35.1244115+10:00:Assembly resolving Eyes.Sdk.Core.DotNet, Version=2.49.0.0, Culture=neutral, PublicKeyToken=null
+2021-08-02T22:30:35.1251988+10:00:2021-08-02T22:30:35.1249241+10:00:[AssemblyCache] Trying to resolve 'Eyes.Sdk.Core.DotNet' from .deps.json file
+2021-08-02T22:30:35.1259298+10:00:2021-08-02T22:30:35.1256541+10:00:[AssemblyCache] Resolved 'Eyes.Sdk.Core.DotNet' to 'C:\Users\Satish\.nuget\packages\eyes.sdk.core\2.49.0\lib\netstandard2.0\Eyes.Sdk.Core.DotNet.dll'
+2021-08-02T22:30:35.1273187+10:00:2021-08-02T22:30:35.1270610+10:00:Assembly resolving Eyes.Ufg.DotNet, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null
+2021-08-02T22:30:35.1278016+10:00:2021-08-02T22:30:35.1275604+10:00:[AssemblyCache] Trying to resolve 'Eyes.Ufg.DotNet' from .deps.json file
+2021-08-02T22:30:35.1285250+10:00:2021-08-02T22:30:35.1283060+10:00:[AssemblyCache] Resolved 'Eyes.Ufg.DotNet' to 'C:\Users\Satish\.nuget\packages\eyes.selenium\2.54.0\lib\netstandard2.0\Eyes.Ufg.DotNet.dll'
+2021-08-02T22:30:35.1302499+10:00:2021-08-02T22:30:35.1299002+10:00:Assembly resolving Eyes.Common.DotNet, Version=1.9.0.0, Culture=neutral, PublicKeyToken=null
+2021-08-02T22:30:35.1306870+10:00:2021-08-02T22:30:35.1304673+10:00:[AssemblyCache] Trying to resolve 'Eyes.Common.DotNet' from .deps.json file
+2021-08-02T22:30:35.1314781+10:00:2021-08-02T22:30:35.1312293+10:00:[AssemblyCache] Resolved 'Eyes.Common.DotNet' to 'C:\Users\Satish\.nuget\packages\eyes.sdk.core\2.49.0\lib\netstandard2.0\Eyes.Common.DotNet.dll'
+2021-08-02T22:30:35.1333303+10:00:2021-08-02T22:30:35.1330803+10:00:Assembly resolving Eyes.Sdk.Core.DotNet, Version=2.49.0.0, Culture=neutral, PublicKeyToken=null
+2021-08-02T22:30:35.1344309+10:00:2021-08-02T22:30:35.1341902+10:00:Assembly resolving Eyes.Common.DotNet, Version=1.10.0.0, Culture=neutral, PublicKeyToken=null
+2021-08-02T22:30:35.1362342+10:00:2021-08-02T22:30:35.1359987+10:00:Thread#0:T:Start of Applitools
+2021-08-02T22:30:35.1419629+10:00:2021-08-02T22:30:35.1416814+10:00:Assembly resolving Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed
+2021-08-02T22:30:35.1425263+10:00:2021-08-02T22:30:35.1422300+10:00:[AssemblyCache] Trying to resolve 'Newtonsoft.Json' from .deps.json file
+2021-08-02T22:30:35.1433268+10:00:2021-08-02T22:30:35.1429855+10:00:[AssemblyCache] Resolved 'Newtonsoft.Json' to 'C:\Users\Satish\.nuget\packages\newtonsoft.json\12.0.3\lib\netstandard2.0\Newtonsoft.Json.dll'
+2021-08-02T22:30:44.5190417+10:00:2021-08-02T22:30:44.5176807+10:00:Thread#0:T:After Eyes Open
+2021-08-02T22:30:45.5760988+10:00:2021-08-02T22:30:45.5757585+10:00:Thread#0:T:After Eyes Check
+2021-08-02T22:30:45.5778409+10:00:2021-08-02T22:30:45.5775943+10:00:Thread#0:T:After Eyes Close
+2021-08-02T22:30:52.7343206+10:00:2021-08-02T22:30:45.5974071+10:00:Assembly resolving BrotliSharpLib, Version=0.3.2.0, Culture=neutral, PublicKeyToken=3f4e2a1cd615fcb7
+2021-08-02T22:30:52.7360647+10:00:2021-08-02T22:30:52.7349154+10:00:[AssemblyCache] Trying to resolve 'BrotliSharpLib' from .deps.json file
+2021-08-02T22:30:52.7374244+10:00:2021-08-02T22:30:52.7370526+10:00:[AssemblyCache] Resolved 'BrotliSharpLib' to 'C:\Users\Satish\.nuget\packages\brotlisharplib\0.3.3\lib\netstandard2.0\BrotliSharpLib.dll'
+2021-08-02T22:30:52.9543403+10:00:2021-08-02T22:30:52.9535201+10:00:Assembly resolving HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a
+2021-08-02T22:30:52.9574614+10:00:2021-08-02T22:30:52.9569127+10:00:[AssemblyCache] Trying to resolve 'HtmlAgilityPack' from .deps.json file
+2021-08-02T22:30:52.9586024+10:00:2021-08-02T22:30:52.9580189+10:00:[AssemblyCache] Could not resolve 'HtmlAgilityPack' from .deps.json
+2021-08-02T22:30:52.9597703+10:00:2021-08-02T22:30:52.9591672+10:00:[AssemblyCache] Trying to resolve 'HtmlAgilityPack' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0'
+2021-08-02T22:30:52.9608863+10:00:2021-08-02T22:30:52.9603320+10:00:[AssemblyCache] Trying to resolve 'HtmlAgilityPack' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\HtmlAgilityPack.dll'
+2021-08-02T22:30:52.9622305+10:00:2021-08-02T22:30:52.9616248+10:00:[AssemblyCache] Trying to resolve 'HtmlAgilityPack' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\HtmlAgilityPack.exe'
+2021-08-02T22:30:52.9635460+10:00:2021-08-02T22:30:52.9629716+10:00:[AssemblyCache] Could not resolve 'HtmlAgilityPack' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0'
+2021-08-02T22:30:52.9655856+10:00:2021-08-02T22:30:52.9650625+10:00:TargetFramework: .NETCoreApp,Version=v5.0
+2021-08-02T22:30:52.9681478+10:00:2021-08-02T22:30:52.9673638+10:00:Tfm: netcoreapp5.0
+2021-08-02T22:30:52.9693632+10:00:2021-08-02T22:30:52.9686944+10:00:[AssemblyCache] Trying to resolve 'HtmlAgilityPack' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0'
+2021-08-02T22:30:52.9704901+10:00:2021-08-02T22:30:52.9698562+10:00:[AssemblyCache] Trying to resolve 'HtmlAgilityPack' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0\HtmlAgilityPack.dll'
+2021-08-02T22:30:52.9718529+10:00:2021-08-02T22:30:52.9712724+10:00:[AssemblyCache] Trying to resolve 'HtmlAgilityPack' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0\HtmlAgilityPack.exe'
+2021-08-02T22:30:52.9731747+10:00:2021-08-02T22:30:52.9726147+10:00:[AssemblyCache] Could not resolve 'HtmlAgilityPack' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0'
+2021-08-02T22:30:53.0045361+10:00:2021-08-02T22:30:53.0034179+10:00:Assembly resolving CssParser, Version=1.3.0.0, Culture=neutral, PublicKeyToken=null
+2021-08-02T22:30:53.0058177+10:00:2021-08-02T22:30:53.0051597+10:00:[AssemblyCache] Trying to resolve 'CssParser' from .deps.json file
+2021-08-02T22:30:53.0083599+10:00:2021-08-02T22:30:53.0075987+10:00:[AssemblyCache] Resolved 'CssParser' to 'C:\Users\Satish\.nuget\packages\eyes.selenium\2.54.0\lib\netstandard2.0\CssParser.dll'
+2021-08-02T22:30:53.0326080+10:00:2021-08-02T22:30:53.0317121+10:00:[AssemblyCache] Trying to resolve 'HtmlAgilityPack' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8'
+2021-08-02T22:30:53.0341332+10:00:2021-08-02T22:30:53.0331814+10:00:[AssemblyCache] Trying to resolve 'HtmlAgilityPack' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8\HtmlAgilityPack.dll'
+2021-08-02T22:30:53.0753761+10:00:2021-08-02T22:30:53.0486802+10:00:[AssemblyCache] Trying to resolve 'HtmlAgilityPack' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8\HtmlAgilityPack.exe'
+2021-08-02T22:30:53.0767569+10:00:2021-08-02T22:30:53.0761659+10:00:[AssemblyCache] Could not resolve 'HtmlAgilityPack' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8'
+2021-08-02T22:30:53.0783732+10:00:2021-08-02T22:30:53.0778232+10:00:[AssemblyCache] Trying to resolve 'HtmlAgilityPack' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8'
+2021-08-02T22:30:53.0793279+10:00:2021-08-02T22:30:53.0787403+10:00:[AssemblyCache] Trying to resolve 'HtmlAgilityPack' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8\HtmlAgilityPack.dll'
+2021-08-02T22:30:53.0806243+10:00:2021-08-02T22:30:53.0799336+10:00:[AssemblyCache] Trying to resolve 'HtmlAgilityPack' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8\HtmlAgilityPack.exe'
+2021-08-02T22:30:53.0815983+10:00:2021-08-02T22:30:53.0811607+10:00:[AssemblyCache] Could not resolve 'HtmlAgilityPack' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8'
+2021-08-02T22:30:53.0828508+10:00:2021-08-02T22:30:53.0824760+10:00:[AssemblyCache] Trying to resolve 'HtmlAgilityPack' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8'
+2021-08-02T22:30:53.0835940+10:00:2021-08-02T22:30:53.0832346+10:00:[AssemblyCache] Trying to resolve 'HtmlAgilityPack' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8\HtmlAgilityPack.dll'
+2021-08-02T22:30:53.0844435+10:00:2021-08-02T22:30:53.0840926+10:00:[AssemblyCache] Trying to resolve 'HtmlAgilityPack' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8\HtmlAgilityPack.exe'
+2021-08-02T22:30:53.0853813+10:00:2021-08-02T22:30:53.0849464+10:00:[AssemblyCache] Could not resolve 'HtmlAgilityPack' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8'
+2021-08-02T22:30:53.5035418+10:00:2021-08-02T22:30:53.5031441+10:00:Assembly resolving HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a
+2021-08-02T22:30:53.5115151+10:00:2021-08-02T22:30:53.5111644+10:00:Assembly resolving HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a
+2021-08-02T22:30:53.5198651+10:00:2021-08-02T22:30:53.5195256+10:00:Assembly resolving HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a
+2021-08-02T22:30:53.5243057+10:00:2021-08-02T22:30:53.5239963+10:00:Thread#0:T:[ERR]System.IO.FileNotFoundException: Could not load file or assembly 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'. The system cannot find the file specified.
+2021-08-02T22:30:53.5248826+10:00:2021-08-02T22:30:53.5245835+10:00:Thread#0:T:[ERR]File name: 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'
+2021-08-02T22:30:53.5379233+10:00:2021-08-02T22:30:53.5376153+10:00:Thread#0:T:[ERR] ---> System.IO.FileNotFoundException: Could not load file or assembly 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'. The system cannot find the file specified.
+2021-08-02T22:30:53.5384278+10:00:2021-08-02T22:30:53.5381696+10:00:Thread#0:T:[ERR]File name: 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'
+2021-08-02T22:30:53.5388853+10:00:2021-08-02T22:30:53.5386410+10:00:Thread#0:T:[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+2021-08-02T22:30:53.5392994+10:00:2021-08-02T22:30:53.5390627+10:00:Thread#0:T:[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark& stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+2021-08-02T22:30:53.5397921+10:00:2021-08-02T22:30:53.5395228+10:00:Thread#0:T:[ERR]   at System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName(AssemblyName assemblyName)
+2021-08-02T22:30:53.5401764+10:00:2021-08-02T22:30:53.5399874+10:00:Thread#0:T:[ERR]   at TechTalk.SpecRun.Framework.FrameworkDependent.AssemblyHelper.Load(AssemblyName assemblyName)
+2021-08-02T22:30:53.5405083+10:00:2021-08-02T22:30:53.5403686+10:00:Thread#0:T:[ERR]   at System.Runtime.Loader.AssemblyLoadContext.ResolveUsingLoad(AssemblyName assemblyName)
+2021-08-02T22:30:53.5408606+10:00:2021-08-02T22:30:53.5406593+10:00:Assembly resolving HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a
+2021-08-02T22:30:53.5428281+10:00:2021-08-02T22:30:53.5406757+10:00:Thread#0:T:[ERR]   at System.Runtime.Loader.AssemblyLoadContext.Resolve(IntPtr gchManagedAssemblyLoadContext, AssemblyName assemblyName)
+2021-08-02T22:30:53.5432617+10:00:2021-08-02T22:30:53.5430466+10:00:Thread#0:T:[ERR]   at Applitools.Ufg.DomAnalyzer.ParseSVG_(TextualDataResource tdr, Dictionary`2 allResourceUris, Logger logger, ConcurrentDictionary`2 cache)
+2021-08-02T22:30:53.5436612+10:00:2021-08-02T22:30:53.5434577+10:00:Thread#0:T:[ERR]   at Applitools.Ufg.DomAnalyzer.GetAndParseResource_(FrameData frameData, RGridResource blob, Uri baseUrl, Dictionary`2 resourceUrls, Logger logger, IDebugResourceWriter debugResourceWriter, ConcurrentDictionary`2 cache)
+2021-08-02T22:30:53.5444170+10:00:2021-08-02T22:30:53.5441756+10:00:Thread#0:T:[ERR]System.IO.FileNotFoundException: Could not load file or assembly 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'. The system cannot find the file specified.
+2021-08-02T22:30:53.5448569+10:00:2021-08-02T22:30:53.5446173+10:00:Thread#0:T:[ERR]File name: 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'
+2021-08-02T22:30:53.5452260+10:00:2021-08-02T22:30:53.5450177+10:00:Thread#0:T:[ERR] ---> System.IO.FileNotFoundException: Could not load file or assembly 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'. The system cannot find the file specified.
+2021-08-02T22:30:53.5457146+10:00:2021-08-02T22:30:53.5455177+10:00:Thread#0:T:[ERR]File name: 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'
+2021-08-02T22:30:53.5462084+10:00:2021-08-02T22:30:53.5459736+10:00:Thread#0:T:[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+2021-08-02T22:30:53.5465891+10:00:2021-08-02T22:30:53.5464203+10:00:Thread#0:T:[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark& stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+2021-08-02T22:30:53.5470213+10:00:2021-08-02T22:30:53.5468429+10:00:Thread#0:T:[ERR]   at System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName(AssemblyName assemblyName)
+2021-08-02T22:30:53.5473995+10:00:2021-08-02T22:30:53.5471864+10:00:Thread#0:T:[ERR]   at TechTalk.SpecRun.Framework.FrameworkDependent.AssemblyHelper.Load(AssemblyName assemblyName)
+2021-08-02T22:30:53.5477291+10:00:2021-08-02T22:30:53.5475588+10:00:Thread#0:T:[ERR]   at System.Runtime.Loader.AssemblyLoadContext.ResolveUsingLoad(AssemblyName assemblyName)
+2021-08-02T22:30:53.5481030+10:00:2021-08-02T22:30:53.5479472+10:00:Thread#0:T:[ERR]   at System.Runtime.Loader.AssemblyLoadContext.Resolve(IntPtr gchManagedAssemblyLoadContext, AssemblyName assemblyName)
+2021-08-02T22:30:53.5485383+10:00:2021-08-02T22:30:53.5483218+10:00:Thread#0:T:[ERR]   at Applitools.Ufg.DomAnalyzer.ParseSVG_(TextualDataResource tdr, Dictionary`2 allResourceUris, Logger logger, ConcurrentDictionary`2 cache)
+2021-08-02T22:30:53.5489086+10:00:2021-08-02T22:30:53.5487060+10:00:Thread#0:T:[ERR]   at Applitools.Ufg.DomAnalyzer.GetAndParseResource_(FrameData frameData, RGridResource blob, Uri baseUrl, Dictionary`2 resourceUrls, Logger logger, IDebugResourceWriter debugResourceWriter, ConcurrentDictionary`2 cache)
+2021-08-02T22:30:53.5494808+10:00:2021-08-02T22:30:53.5492705+10:00:Thread#0:T:[ERR]System.IO.FileNotFoundException: Could not load file or assembly 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'. The system cannot find the file specified.
+2021-08-02T22:30:53.5499765+10:00:2021-08-02T22:30:53.5497459+10:00:Thread#0:T:[ERR]File name: 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'
+2021-08-02T22:30:53.5503449+10:00:2021-08-02T22:30:53.5501880+10:00:Thread#0:T:[ERR] ---> System.IO.FileNotFoundException: Could not load file or assembly 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'. The system cannot find the file specified.
+2021-08-02T22:30:53.5507114+10:00:2021-08-02T22:30:53.5505064+10:00:Thread#0:T:[ERR]File name: 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'
+2021-08-02T22:30:53.5510640+10:00:2021-08-02T22:30:53.5508504+10:00:Thread#0:T:[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+2021-08-02T22:30:53.5514136+10:00:2021-08-02T22:30:53.5512202+10:00:Thread#0:T:[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark& stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+2021-08-02T22:30:53.5517408+10:00:2021-08-02T22:30:53.5515566+10:00:Thread#0:T:[ERR]   at System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName(AssemblyName assemblyName)
+2021-08-02T22:30:53.5520728+10:00:2021-08-02T22:30:53.5518923+10:00:Thread#0:T:[ERR]   at TechTalk.SpecRun.Framework.FrameworkDependent.AssemblyHelper.Load(AssemblyName assemblyName)
+2021-08-02T22:30:53.5524178+10:00:2021-08-02T22:30:53.5522123+10:00:Thread#0:T:[ERR]   at System.Runtime.Loader.AssemblyLoadContext.ResolveUsingLoad(AssemblyName assemblyName)
+2021-08-02T22:30:53.5527650+10:00:2021-08-02T22:30:53.5525565+10:00:Thread#0:T:[ERR]   at System.Runtime.Loader.AssemblyLoadContext.Resolve(IntPtr gchManagedAssemblyLoadContext, AssemblyName assemblyName)
+2021-08-02T22:30:53.5532023+10:00:2021-08-02T22:30:53.5529714+10:00:Thread#0:T:[ERR]   at Applitools.Ufg.DomAnalyzer.ParseSVG_(TextualDataResource tdr, Dictionary`2 allResourceUris, Logger logger, ConcurrentDictionary`2 cache)
+2021-08-02T22:30:53.5535737+10:00:2021-08-02T22:30:53.5533856+10:00:Thread#0:T:[ERR]   at Applitools.Ufg.DomAnalyzer.GetAndParseResource_(FrameData frameData, RGridResource blob, Uri baseUrl, Dictionary`2 resourceUrls, Logger logger, IDebugResourceWriter debugResourceWriter, ConcurrentDictionary`2 cache)
+2021-08-02T22:30:53.5540978+10:00:2021-08-02T22:30:53.5539130+10:00:Thread#0:T:[ERR]System.IO.FileNotFoundException: Could not load file or assembly 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'. The system cannot find the file specified.
+2021-08-02T22:30:53.5544417+10:00:2021-08-02T22:30:53.5542653+10:00:Thread#0:T:[ERR]File name: 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'
+2021-08-02T22:30:53.5547975+10:00:2021-08-02T22:30:53.5546101+10:00:Thread#0:T:[ERR] ---> System.IO.FileNotFoundException: Could not load file or assembly 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'. The system cannot find the file specified.
+2021-08-02T22:30:53.5551151+10:00:2021-08-02T22:30:53.5549431+10:00:Thread#0:T:[ERR]File name: 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'
+2021-08-02T22:30:53.5553988+10:00:2021-08-02T22:30:53.5552428+10:00:Thread#0:T:[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+2021-08-02T22:30:53.5557254+10:00:2021-08-02T22:30:53.5555675+10:00:Thread#0:T:[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark& stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+2021-08-02T22:30:53.5560160+10:00:2021-08-02T22:30:53.5558636+10:00:Thread#0:T:[ERR]   at System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName(AssemblyName assemblyName)
+2021-08-02T22:30:53.5563151+10:00:2021-08-02T22:30:53.5561675+10:00:Thread#0:T:[ERR]   at TechTalk.SpecRun.Framework.FrameworkDependent.AssemblyHelper.Load(AssemblyName assemblyName)
+2021-08-02T22:30:53.5566344+10:00:2021-08-02T22:30:53.5564541+10:00:Thread#0:T:[ERR]   at System.Runtime.Loader.AssemblyLoadContext.ResolveUsingLoad(AssemblyName assemblyName)
+2021-08-02T22:30:53.5569130+10:00:2021-08-02T22:30:53.5567708+10:00:Thread#0:T:[ERR]   at System.Runtime.Loader.AssemblyLoadContext.Resolve(IntPtr gchManagedAssemblyLoadContext, AssemblyName assemblyName)
+2021-08-02T22:30:53.5572533+10:00:2021-08-02T22:30:53.5571018+10:00:Thread#0:T:[ERR]   at Applitools.Ufg.DomAnalyzer.ParseSVG_(TextualDataResource tdr, Dictionary`2 allResourceUris, Logger logger, ConcurrentDictionary`2 cache)
+2021-08-02T22:30:53.5575687+10:00:2021-08-02T22:30:53.5574024+10:00:Thread#0:T:[ERR]   at Applitools.Ufg.DomAnalyzer.GetAndParseResource_(FrameData frameData, RGridResource blob, Uri baseUrl, Dictionary`2 resourceUrls, Logger logger, IDebugResourceWriter debugResourceWriter, ConcurrentDictionary`2 cache)
+2021-08-02T22:30:53.5580808+10:00:2021-08-02T22:30:53.5579152+10:00:Thread#0:T:[ERR]System.IO.FileNotFoundException: Could not load file or assembly 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'. The system cannot find the file specified.
+2021-08-02T22:30:53.5584235+10:00:2021-08-02T22:30:53.5582321+10:00:Thread#0:T:[ERR]File name: 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'
+2021-08-02T22:30:53.5587518+10:00:2021-08-02T22:30:53.5585759+10:00:Thread#0:T:[ERR] ---> System.IO.FileNotFoundException: Could not load file or assembly 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'. The system cannot find the file specified.
+2021-08-02T22:30:53.5589992+10:00:2021-08-02T22:30:53.5588837+10:00:Thread#0:T:[ERR]File name: 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'
+2021-08-02T22:30:53.5592610+10:00:2021-08-02T22:30:53.5591328+10:00:Thread#0:T:[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+2021-08-02T22:30:53.5595291+10:00:2021-08-02T22:30:53.5593713+10:00:Thread#0:T:[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark& stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+2021-08-02T22:30:53.5598867+10:00:2021-08-02T22:30:53.5597023+10:00:Thread#0:T:[ERR]   at System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName(AssemblyName assemblyName)
+2021-08-02T22:30:53.5601440+10:00:2021-08-02T22:30:53.5600170+10:00:Thread#0:T:[ERR]   at TechTalk.SpecRun.Framework.FrameworkDependent.AssemblyHelper.Load(AssemblyName assemblyName)
+2021-08-02T22:30:53.5655902+10:00:2021-08-02T22:30:53.5602630+10:00:Thread#0:T:[ERR]   at System.Runtime.Loader.AssemblyLoadContext.ResolveUsingLoad(AssemblyName assemblyName)
+2021-08-02T22:30:53.5659897+10:00:2021-08-02T22:30:53.5658325+10:00:Thread#0:T:[ERR]   at System.Runtime.Loader.AssemblyLoadContext.Resolve(IntPtr gchManagedAssemblyLoadContext, AssemblyName assemblyName)
+2021-08-02T22:30:53.5662906+10:00:2021-08-02T22:30:53.5661573+10:00:Thread#0:T:[ERR]   at Applitools.Ufg.DomAnalyzer.ParseSVG_(TextualDataResource tdr, Dictionary`2 allResourceUris, Logger logger, ConcurrentDictionary`2 cache)
+2021-08-02T22:30:53.5665538+10:00:2021-08-02T22:30:53.5664296+10:00:Thread#0:T:[ERR]   at Applitools.Ufg.DomAnalyzer.GetAndParseResource_(FrameData frameData, RGridResource blob, Uri baseUrl, Dictionary`2 resourceUrls, Logger logger, IDebugResourceWriter debugResourceWriter, ConcurrentDictionary`2 cache)
+2021-08-02T22:30:53.6771372+10:00:2021-08-02T22:30:53.6764702+10:00:Assembly resolving System.Net.Requests.resources, Version=5.0.0.0, Culture=en-GB, PublicKeyToken=b03f5f7f11d50a3a
+2021-08-02T22:30:53.6782476+10:00:2021-08-02T22:30:53.6777739+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' from .deps.json file
+2021-08-02T22:30:53.6793066+10:00:2021-08-02T22:30:53.6787746+10:00:[AssemblyCache] Could not resolve 'System.Net.Requests.resources' from .deps.json
+2021-08-02T22:30:53.6807654+10:00:2021-08-02T22:30:53.6800724+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0'
+2021-08-02T22:30:53.6819684+10:00:2021-08-02T22:30:53.6813083+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\System.Net.Requests.resources.dll'
+2021-08-02T22:30:53.6831993+10:00:2021-08-02T22:30:53.6826303+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\System.Net.Requests.resources.exe'
+2021-08-02T22:30:53.6844135+10:00:2021-08-02T22:30:53.6838990+10:00:[AssemblyCache] Could not resolve 'System.Net.Requests.resources' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0'
+2021-08-02T22:30:53.6851765+10:00:2021-08-02T22:30:53.6848090+10:00:TargetFramework: .NETCoreApp,Version=v5.0
+2021-08-02T22:30:53.6859831+10:00:2021-08-02T22:30:53.6856423+10:00:Tfm: netcoreapp5.0
+2021-08-02T22:30:53.6869469+10:00:2021-08-02T22:30:53.6864848+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0'
+2021-08-02T22:30:53.6879162+10:00:2021-08-02T22:30:53.6874346+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0\System.Net.Requests.resources.dll'
+2021-08-02T22:30:53.6891039+10:00:2021-08-02T22:30:53.6885563+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0\System.Net.Requests.resources.exe'
+2021-08-02T22:30:53.6902767+10:00:2021-08-02T22:30:53.6897287+10:00:[AssemblyCache] Could not resolve 'System.Net.Requests.resources' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0'
+2021-08-02T22:30:53.6933402+10:00:2021-08-02T22:30:53.6927117+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8'
+2021-08-02T22:30:53.6942825+10:00:2021-08-02T22:30:53.6938415+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8\System.Net.Requests.resources.dll'
+2021-08-02T22:30:53.6957086+10:00:2021-08-02T22:30:53.6950193+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8\System.Net.Requests.resources.exe'
+2021-08-02T22:30:53.6970236+10:00:2021-08-02T22:30:53.6965231+10:00:[AssemblyCache] Could not resolve 'System.Net.Requests.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8'
+2021-08-02T22:30:53.6990273+10:00:2021-08-02T22:30:53.6983851+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8'
+2021-08-02T22:30:53.6999524+10:00:2021-08-02T22:30:53.6994675+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8\System.Net.Requests.resources.dll'
+2021-08-02T22:30:53.7011756+10:00:2021-08-02T22:30:53.7005985+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8\System.Net.Requests.resources.exe'
+2021-08-02T22:30:53.7023815+10:00:2021-08-02T22:30:53.7019052+10:00:[AssemblyCache] Could not resolve 'System.Net.Requests.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8'
+2021-08-02T22:30:53.7041406+10:00:2021-08-02T22:30:53.7034702+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8'
+2021-08-02T22:30:53.7051173+10:00:2021-08-02T22:30:53.7046524+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8\System.Net.Requests.resources.dll'
+2021-08-02T22:30:53.7064703+10:00:2021-08-02T22:30:53.7058661+10:00:[AssemblyCache] Trying to resolve 'System.Net.Requests.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8\System.Net.Requests.resources.exe'
+2021-08-02T22:30:53.7077118+10:00:2021-08-02T22:30:53.7071337+10:00:[AssemblyCache] Could not resolve 'System.Net.Requests.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8'
+2021-08-02T22:30:53.7100251+10:00:2021-08-02T22:30:53.7094541+10:00:Assembly resolving System.Net.Requests.resources, Version=5.0.0.0, Culture=en, PublicKeyToken=b03f5f7f11d50a3a
+2021-08-02T22:30:53.7997528+10:00:2021-08-02T22:30:53.7990494+10:00:Assembly resolving HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a
+2021-08-02T22:30:53.8241492+10:00:2021-08-02T22:30:53.8235734+10:00:Thread#0:T:[ERR]System.IO.FileNotFoundException: Could not load file or assembly 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'. The system cannot find the file specified.
+2021-08-02T22:30:53.8250219+10:00:2021-08-02T22:30:53.8245718+10:00:Thread#0:T:[ERR]File name: 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'
+2021-08-02T22:30:53.8257075+10:00:2021-08-02T22:30:53.8253544+10:00:Thread#0:T:[ERR] ---> System.IO.FileNotFoundException: Could not load file or assembly 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'. The system cannot find the file specified.
+2021-08-02T22:30:53.8263775+10:00:2021-08-02T22:30:53.8260258+10:00:Thread#0:T:[ERR]File name: 'HtmlAgilityPack, Version=1.11.30.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a'
+2021-08-02T22:30:53.8271156+10:00:2021-08-02T22:30:53.8267707+10:00:Thread#0:T:[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+2021-08-02T22:30:53.8279566+10:00:2021-08-02T22:30:53.8275531+10:00:Thread#0:T:[ERR]   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark& stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+2021-08-02T22:30:53.8287751+10:00:2021-08-02T22:30:53.8284038+10:00:Thread#0:T:[ERR]   at System.Runtime.Loader.AssemblyLoadContext.LoadFromAssemblyName(AssemblyName assemblyName)
+2021-08-02T22:30:53.8297598+10:00:2021-08-02T22:30:53.8292828+10:00:Thread#0:T:[ERR]   at TechTalk.SpecRun.Framework.FrameworkDependent.AssemblyHelper.Load(AssemblyName assemblyName)
+2021-08-02T22:30:53.8307851+10:00:2021-08-02T22:30:53.8303122+10:00:Thread#0:T:[ERR]   at System.Runtime.Loader.AssemblyLoadContext.ResolveUsingLoad(AssemblyName assemblyName)
+2021-08-02T22:30:53.8314927+10:00:2021-08-02T22:30:53.8311185+10:00:Thread#0:T:[ERR]   at System.Runtime.Loader.AssemblyLoadContext.Resolve(IntPtr gchManagedAssemblyLoadContext, AssemblyName assemblyName)
+2021-08-02T22:30:53.8322478+10:00:2021-08-02T22:30:53.8318539+10:00:Thread#0:T:[ERR]   at Applitools.Ufg.DomAnalyzer.ParseSVG_(TextualDataResource tdr, Dictionary`2 allResourceUris, Logger logger, ConcurrentDictionary`2 cache)
+2021-08-02T22:30:53.8332000+10:00:2021-08-02T22:30:53.8326964+10:00:Thread#0:T:[ERR]   at Applitools.Ufg.DomAnalyzer.GetAndParseResource_(FrameData frameData, RGridResource blob, Uri baseUrl, Dictionary`2 resourceUrls, Logger logger, IDebugResourceWriter debugResourceWriter, ConcurrentDictionary`2 cache)
+2021-08-02T22:31:10.8730553+10:00:2021-08-02T22:31:10.8718243+10:00:Thread#0:T:[ERR]Applitools.Exceptions.DiffsFoundException: Test 'Ultrafast grid demo_1' of 'C# Demo App' detected differences! See details at: https://eyes.applitools.com/app/batches/00000251774393355198/00000251774393354163?accountId=wr5oFz2IPkWnnE7rRBmkQg~~
+2021-08-02T22:31:10.8742100+10:00:2021-08-02T22:31:10.8736411+10:00:Thread#0:T:[ERR]   at Applitools.EyesBase.LogSessionResultsAndThrowException(Boolean throwEx, TestResults results, String caller)
+2021-08-02T22:31:10.8749781+10:00:2021-08-02T22:31:10.8746145+10:00:Thread#0:T:[ERR]   at Applitools.RunningTest.CloseCompleted(TestResults testResults)
+2021-08-02T22:31:10.8771646+10:00:2021-08-02T22:31:10.8765939+10:00:Thread#0:T:[ERR]Applitools.Exceptions.DiffsFoundException: Test 'Ultrafast grid demo_1' of 'C# Demo App' detected differences! See details at: https://eyes.applitools.com/app/batches/00000251774393355198/00000251774393354870?accountId=wr5oFz2IPkWnnE7rRBmkQg~~
+2021-08-02T22:31:10.8780509+10:00:2021-08-02T22:31:10.8775976+10:00:Thread#0:T:[ERR]   at Applitools.EyesBase.LogSessionResultsAndThrowException(Boolean throwEx, TestResults results, String caller)
+2021-08-02T22:31:10.8789672+10:00:2021-08-02T22:31:10.8784803+10:00:Thread#0:T:[ERR]   at Applitools.RunningTest.CloseCompleted(TestResults testResults)
+2021-08-02T22:31:13.6573407+10:00:2021-08-02T22:31:13.6565467+10:00:Thread#0:T:[ERR]Applitools.Exceptions.DiffsFoundException: Test 'Ultrafast grid demo_1' of 'C# Demo App' detected differences! See details at: https://eyes.applitools.com/app/batches/00000251774393355198/00000251774393354021?accountId=wr5oFz2IPkWnnE7rRBmkQg~~
+2021-08-02T22:31:13.6583629+10:00:2021-08-02T22:31:13.6578255+10:00:Thread#0:T:[ERR]   at Applitools.EyesBase.LogSessionResultsAndThrowException(Boolean throwEx, TestResults results, String caller)
+2021-08-02T22:31:13.6593971+10:00:2021-08-02T22:31:13.6588640+10:00:Thread#0:T:[ERR]   at Applitools.RunningTest.CloseCompleted(TestResults testResults)
+2021-08-02T22:31:14.1229782+10:00:2021-08-02T22:31:14.1221910+10:00:Thread#0:T:[ERR]Applitools.Exceptions.DiffsFoundException: Test 'Ultrafast grid demo_1' of 'C# Demo App' detected differences! See details at: https://eyes.applitools.com/app/batches/00000251774393355198/00000251774393352489?accountId=wr5oFz2IPkWnnE7rRBmkQg~~
+2021-08-02T22:31:14.1240890+10:00:2021-08-02T22:31:14.1235059+10:00:Thread#0:T:[ERR]   at Applitools.EyesBase.LogSessionResultsAndThrowException(Boolean throwEx, TestResults results, String caller)
+2021-08-02T22:31:14.1250033+10:00:2021-08-02T22:31:14.1245223+10:00:Thread#0:T:[ERR]   at Applitools.RunningTest.CloseCompleted(TestResults testResults)
+2021-08-02T22:31:14.6416629+10:00:2021-08-02T22:31:14.6408661+10:00:Thread#0:T:[ERR]Applitools.Exceptions.DiffsFoundException: Test 'Ultrafast grid demo_1' of 'C# Demo App' detected differences! See details at: https://eyes.applitools.com/app/batches/00000251774393355198/00000251774393353208?accountId=wr5oFz2IPkWnnE7rRBmkQg~~
+2021-08-02T22:31:14.6428100+10:00:2021-08-02T22:31:14.6423108+10:00:Thread#0:T:[ERR]   at Applitools.EyesBase.LogSessionResultsAndThrowException(Boolean throwEx, TestResults results, String caller)
+2021-08-02T22:31:14.6437038+10:00:2021-08-02T22:31:14.6432920+10:00:Thread#0:T:[ERR]   at Applitools.RunningTest.CloseCompleted(TestResults testResults)
+2021-08-02T22:31:16.1791605+10:00:2021-08-02T22:31:16.1787479+10:00:Thread#0:T:[ERR]Applitools.Exceptions.DiffsFoundException: Test 'Ultrafast grid demo_1' of 'C# Demo App' detected differences! See details at: https://eyes.applitools.com/app/batches/00000251774393355198/00000251774393352568?accountId=wr5oFz2IPkWnnE7rRBmkQg~~
+2021-08-02T22:31:16.1797970+10:00:2021-08-02T22:31:16.1795242+10:00:Thread#0:T:[ERR]   at Applitools.EyesBase.LogSessionResultsAndThrowException(Boolean throwEx, TestResults results, String caller)
+2021-08-02T22:31:16.1801970+10:00:2021-08-02T22:31:16.1799737+10:00:Thread#0:T:[ERR]   at Applitools.RunningTest.CloseCompleted(TestResults testResults)
+2021-08-02T22:31:17.6225899+10:00:2021-08-02T22:31:17.6217771+10:00:Thread#0:T:[ERR]Applitools.Exceptions.DiffsFoundException: Test 'Ultrafast grid demo_1' of 'C# Demo App' detected differences! See details at: https://eyes.applitools.com/app/batches/00000251774393355198/00000251774393353370?accountId=wr5oFz2IPkWnnE7rRBmkQg~~
+2021-08-02T22:31:17.6238884+10:00:2021-08-02T22:31:17.6232997+10:00:Thread#0:T:[ERR]   at Applitools.EyesBase.LogSessionResultsAndThrowException(Boolean throwEx, TestResults results, String caller)
+2021-08-02T22:31:17.6248846+10:00:2021-08-02T22:31:17.6244209+10:00:Thread#0:T:[ERR]   at Applitools.RunningTest.CloseCompleted(TestResults testResults)
+2021-08-02T22:31:18.6660108+10:00:2021-08-02T22:31:18.6650656+10:00:Thread#0:T:error: Error (43.5s)
+2021-08-02T22:31:18.9969217+10:00:2021-08-02T22:31:18.9962846+10:00:Thread#0:T:SCREENSHOT[ ./Screenshots\tmp5BBE.png ]SCREENSHOT
+2021-08-02T22:31:19.0555135+10:00:Cancelling because configured number of failures reached
+2021-08-02T22:31:23.3252052+10:00:Thread#0: Test #4/0 is finished on thread #0 as Failed within 59.4750119 seconds
+2021-08-02T22:31:23.3342307+10:00:2021-08-02T22:31:23.3339531+10:00:Got Deinitialize Signal
+2021-08-02T22:31:23.3372425+10:00:RPC Client disconnected, because 'Disposed'. 
+LastMessage: 
+Description:Stream has been disposed
+Exception:<none>
+2021-08-02T22:31:23.3385724+10:00:RPC Server disconnected, because 'Disposed'. 
+LastMessage: 
+Description:Reached end of stream.
+Exception:<none>
+2021-08-02T22:31:23.3396971+10:00:RPC Server disconnected, because 'Disposed'. 
+LastMessage: 
+Description:Reached end of stream.
+Exception:<none>
+2021-08-02T22:31:23.3416094+10:00:Assembly resolving System.Diagnostics.Process.resources, Version=5.0.0.0, Culture=en-GB, PublicKeyToken=b03f5f7f11d50a3a
+2021-08-02T22:31:23.3416285+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' from .deps.json file
+2021-08-02T22:31:23.3416380+10:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' from .deps.json
+2021-08-02T22:31:23.3416457+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0'
+2021-08-02T22:31:23.3416481+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\System.Diagnostics.Process.resources.dll'
+2021-08-02T22:31:23.3416926+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\System.Diagnostics.Process.resources.exe'
+2021-08-02T22:31:23.3417258+10:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0'
+2021-08-02T22:31:23.3417311+10:00:TargetFramework: .NETCoreApp,Version=v5.0
+2021-08-02T22:31:23.3417493+10:00:Tfm: netcoreapp5.0
+2021-08-02T22:31:23.3417547+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0'
+2021-08-02T22:31:23.3417578+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0\System.Diagnostics.Process.resources.dll'
+2021-08-02T22:31:23.3418067+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0\System.Diagnostics.Process.resources.exe'
+2021-08-02T22:31:23.3418482+10:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\SpecFlowPlusRunner\netcoreapp5.0'
+2021-08-02T22:31:23.3428689+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8'
+2021-08-02T22:31:23.3428821+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8\System.Diagnostics.Process.resources.dll'
+2021-08-02T22:31:23.3429971+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8\System.Diagnostics.Process.resources.exe'
+2021-08-02T22:31:23.3430794+10:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.8'
+2021-08-02T22:31:23.3432838+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8'
+2021-08-02T22:31:23.3432914+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8\System.Diagnostics.Process.resources.dll'
+2021-08-02T22:31:23.3433432+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8\System.Diagnostics.Process.resources.exe'
+2021-08-02T22:31:23.3433878+10:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.8'
+2021-08-02T22:31:23.3435344+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8'
+2021-08-02T22:31:23.3435411+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8\System.Diagnostics.Process.resources.dll'
+2021-08-02T22:31:23.3435966+10:00:[AssemblyCache] Trying to resolve 'System.Diagnostics.Process.resources' to 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8\System.Diagnostics.Process.resources.exe'
+2021-08-02T22:31:23.3436417+10:00:[AssemblyCache] Could not resolve 'System.Diagnostics.Process.resources' in folder 'C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\5.0.8'
+2021-08-02T22:31:23.3441213+10:00:Assembly resolving System.Diagnostics.Process.resources, Version=5.0.0.0, Culture=en, PublicKeyToken=b03f5f7f11d50a3a
+2021-08-02T22:31:23.3515507+10:00:Thread#-1:Scheduler: get next test for thread -1
+2021-08-02T22:31:23.3515774+10:00:Thread#:Scheduler: testitem #5 from normal test queue 
+2021-08-02T22:31:23.3515805+10:00:Thread#-1:Scheduler: considering testitem #5 for thread -1
+2021-08-02T22:31:23.3515821+10:00:Thread#-1:Scheduler: using testitem #5 for thread -1
+2021-08-02T22:31:23.3515848+10:00:Thread#-1:Scheduler: Test #5 is scheduled for thread
+2021-08-02T22:31:23.3518939+10:00:Thread#-1: Test #5/0 is started on thread #-1
+2021-08-02T22:31:23.3519577+10:00:Thread#-1: Test #5/0 is finished on thread #-1 as Skipped within 2.44E-05 seconds
+2021-08-02T22:31:23.3520090+10:00:Thread#-1:Scheduler: get next test for thread -1
+2021-08-02T22:31:23.3520182+10:00:Thread#:Scheduler: at the end of normal test queue
+2021-08-02T22:31:23.3520203+10:00:Thread#-1:Scheduler: enumerator for thread is at end
+2021-08-02T22:31:23.3642431+10:00;Thread#12;Info;test run finished
+2021-08-02T22:31:23.3644151+10:00;Thread#12;Info;publishing test results
+2021-08-02T22:31:23.3646074+10:00;Thread#12;Info;Not publishing results.
+2021-08-02T22:31:23.3646966+10:00;Thread#12;Info;test results published
+2021-08-02T22:31:23.3647651+10:00;Thread#12;Info;generating reports
+2021-08-02T22:31:23.4898827+10:00;Thread#12;Info;Starting external report generation process
+2021-08-02T22:31:26.0417867+10:00;Thread#12;Info;Successfully generated reports.
+2021-08-02T22:31:26.0436979+10:00;Thread#12;Info;Successfully generated reports
+2021-08-02T22:31:26.0509740+10:00:Total: 2
+2021-08-02T22:31:26.0526455+10:00:Succeeded: 0
+2021-08-02T22:31:26.0529125+10:00:Ignored: 0
+2021-08-02T22:31:26.0531226+10:00:Pending: 0
+2021-08-02T22:31:26.0531301+10:00:Skipped: 1
+2021-08-02T22:31:26.0533231+10:00:Failed: 1
+2021-08-02T22:31:26.0597871+10:00;VSTestExecutionThread;Info;Adding attachments to VSTest
+2021-08-02T22:31:26.0599319+10:00;VSTestExecutionThread;Info;adding Test Execution Report 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\Results\Report_2021-08-02T223124.html'
+2021-08-02T22:31:26.0600756+10:00;VSTestExecutionThread;Info;adding Test Execution Report 'D:\QA.Automation-develop\src\TQP.QA.Automation.UI.Test\bin\Debug\net5.0\Results\Report_2021-08-02T223124.json'
+========== End of log file ==========

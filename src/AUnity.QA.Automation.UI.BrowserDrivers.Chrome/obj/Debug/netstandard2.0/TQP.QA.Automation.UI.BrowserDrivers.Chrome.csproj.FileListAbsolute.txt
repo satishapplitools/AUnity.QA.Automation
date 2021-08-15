@@ -1,0 +1,12 @@
+D:\QA.Automation-develop\src\TQP.QA.Automation.UI.BrowserDrivers.Chrome\bin\Debug\netstandard2.0\TQP.QA.Automation.UI.BrowserDrivers.Chrome.deps.json
+D:\QA.Automation-develop\src\TQP.QA.Automation.UI.BrowserDrivers.Chrome\bin\Debug\netstandard2.0\TQP.QA.Automation.UI.BrowserDrivers.Chrome.dll
+D:\QA.Automation-develop\src\TQP.QA.Automation.UI.BrowserDrivers.Chrome\bin\Debug\netstandard2.0\TQP.QA.Automation.UI.BrowserDrivers.Chrome.pdb
+D:\QA.Automation-develop\src\TQP.QA.Automation.UI.BrowserDrivers.Chrome\bin\Debug\netstandard2.0\TQP.QA.Automation.Shared.dll
+D:\QA.Automation-develop\src\TQP.QA.Automation.UI.BrowserDrivers.Chrome\bin\Debug\netstandard2.0\TQP.QA.Automation.Shared.pdb
+D:\QA.Automation-develop\src\TQP.QA.Automation.UI.BrowserDrivers.Chrome\obj\Debug\netstandard2.0\TQP.QA.Automation.UI.BrowserDrivers.Chrome.AssemblyInfoInputs.cache
+D:\QA.Automation-develop\src\TQP.QA.Automation.UI.BrowserDrivers.Chrome\obj\Debug\netstandard2.0\TQP.QA.Automation.UI.BrowserDrivers.Chrome.AssemblyInfo.cs
+D:\QA.Automation-develop\src\TQP.QA.Automation.UI.BrowserDrivers.Chrome\obj\Debug\netstandard2.0\TQP.QA.Automation.UI.BrowserDrivers.Chrome.csproj.CoreCompileInputs.cache
+D:\QA.Automation-develop\src\TQP.QA.Automation.UI.BrowserDrivers.Chrome\obj\Debug\netstandard2.0\TQP.QA.Automation.UI.BrowserDrivers.Chrome.csproj.CopyComplete
+D:\QA.Automation-develop\src\TQP.QA.Automation.UI.BrowserDrivers.Chrome\obj\Debug\netstandard2.0\TQP.QA.Automation.UI.BrowserDrivers.Chrome.dll
+D:\QA.Automation-develop\src\TQP.QA.Automation.UI.BrowserDrivers.Chrome\obj\Debug\netstandard2.0\TQP.QA.Automation.UI.BrowserDrivers.Chrome.pdb
+D:\QA.Automation-develop\src\TQP.QA.Automation.UI.BrowserDrivers.Chrome\obj\Debug\netstandard2.0\TQP.QA.Automation.UI.BrowserDrivers.Chrome.csproj.AssemblyReference.cache

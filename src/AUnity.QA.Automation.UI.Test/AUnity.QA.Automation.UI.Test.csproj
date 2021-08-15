@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Eyes.Selenium" Version="2.54.0" />
+    <PackageReference Include="SolidToken.SpecFlow.DependencyInjection" Version="3.9.0" />
+    <PackageReference Include="SpecRun.SpecFlow" Version="3.9.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AUnity.QA.Automation.Shared\AUnity.QA.Automation.Shared.csproj" />
+    <ProjectReference Include="..\AUnity.QA.Automation.UI.Core\AUnity.QA.Automation.UI.Core.csproj" />
+  </ItemGroup>
+
+    <ItemGroup>
+        <None Update="appsettings*.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+</Project>
